@@ -1,0 +1,173 @@
+////////////////////////
+// Layout Partials
+//
+// Seperate your layout from design, building sub folders and partials
+//  in this folder, with everything being imported, in casading order,
+//  into this file.
+//
+// All box model properties go here
+////////////////////////
+
+.container{
+  @include container;
+  @include susy-grid-background;
+}
+
+@include breakpoint ($breakpoint-small-and-up){
+  
+  // Sidebar
+
+  .sidebar-second{
+    #content{
+      @include span-columns (18, 24);
+      @include suffix(1);
+    }
+    #sidebar-second{
+      @include span-columns (6 omega, 24);
+    }
+  }
+
+  .front #content{
+    @include suffix (0);
+  }
+
+  // Header
+  #header{
+    #name-and-slogan{
+      @include span-columns (5, 24);
+    }
+    .region-header{
+      @include span-columns (19 omega, 24);
+    }
+    #block-menu-block-3{
+      @include prefix (1);
+      clear: both;
+      ul.menu{
+        padding: 0;
+        margin: 0;
+        li{
+          @include inline-list;
+        }
+      }
+    }
+  }
+  #block-menu-menu-secondary-menu{
+    @include span-columns (14, 19);
+    @include prefix (1);
+    ul.menu{
+      margin: 0;
+    }
+  }
+  #block-search-form{
+    @include span-columns (5 omega, 19);
+  }
+
+  // Homepage
+
+  .front{
+    .pane-events, .pane-views{
+      @include span-columns (6, 24);
+    }
+    .pane-block-8{
+      @include span-columns (12 omega, 24)
+    }
+    .pane-block-9{
+      @include span-columns (6, 24);
+    }
+    .region-three{
+      clear: both;
+      .pane-events{
+        @include span-columns (6, 24);
+      }
+      .pane-block-12{
+        @include span-columns (6, 24);
+      }
+      .pane-premium-listings{
+        @include span-columns (6 omega, 24);
+      }
+    }
+  }
+  
+  // Local Directory
+  .view-local-directory{
+    ul li{
+      @include span-columns (8, 24);
+      @include nth-omega(3n);
+      .views-field-field-business-slideshow-images{
+        @include span-columns (4, 8);
+      }
+      .details{
+        @include span-columns (4 omega, 8);
+      }
+    }
+  }  
+
+   .view-a-z-business-lisitings{
+    ul li{
+      @include span-columns (8, 24);
+      @include nth-omega(3n);
+    }
+  } 
+
+  // Region 50-25-25
+  .page-events{
+    .activities{
+      @include span-columns (18, 24);
+      padding-right: 30px;
+    }
+    .events{
+      @include span-columns (6 omega, 24);
+    }
+    // Things to do
+    .view-local-directory{
+      ul{
+        li{
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // Food & Wine
+  .page-food-wine .view-local-directory{
+    ul li{
+      @include span-columns (12, 24);
+      @include nth-omega (2n);
+    }
+  }
+
+  // Listing Node
+  .node-type-business-lisiting{
+    .region-two-66-33-first{
+      @include span-columns (10, 17);
+      @include suffix (1);
+    }
+    .region-two-66-33-second{
+      @include span-columns (7 omega, 17);
+    }
+    .region-two-66-33-bottom{
+      clear: both;
+    }
+  }
+
+  // Footer
+  #footer{
+    .block{
+      @include span-columns (6, 24);
+      padding-right: 20px;
+    }
+    #block-block-13{
+      @include omega;
+    }
+    #block-views-image-gallery-block-1{    
+      .view-image-gallery{
+        li{
+          @include span-columns (2, 6);
+          @include nth-omega (3n);
+        }
+      }
+    }
+  }
+}
+
+

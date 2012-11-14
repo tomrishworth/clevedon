@@ -1,0 +1,121 @@
+diff --git a/taxonomy_menu_path_custom.info b/taxonomy_menu_path_custom.info
+new file mode 100644
+index 0000000..d5a796d
+--- /dev/null
++++ b/taxonomy_menu_path_custom.info
+@@ -0,0 +1,6 @@
++core          = "7.x"
++dependencies[] = taxonomy
++dependencies[] = taxonomy_menu
++description   = "Enables Custom path base to Taxonomy Menu."
++name          = "Taxonomy Menu Custom Path"
++package       = Taxonomy menu
+diff --git a/taxonomy_menu_path_custom.module b/taxonomy_menu_path_custom.module
+new file mode 100644
+index 0000000..8e07ad8
+--- /dev/null
++++ b/taxonomy_menu_path_custom.module
+@@ -0,0 +1,103 @@
++<?php
++
++// $Id: taxonomy_menu_path_custom.module,v 1.1.2.6 2009/10/31 18:39:33 indytechcook Exp $
++
++/**
++ * @file
++ * Implementation of hook_taxonomy_menu_options().
++ *
++ * @return array
++ *  Uses the value to set the variable taxonomy_menu_<value>_$vid
++ *  $options[value]
++ *   default - optional.  this is what will be used if the varialbe is not set.  if empty then FALSE is used
++ *   #title - required.
++ *   any other form element
++ */
++function taxonomy_menu_path_custom_taxonomy_menu_options() {
++
++  $options['taxonomy_menu_path_custom_depth'] = array(
++    '#title' => t('Display depth in custom path'),
++    '#weight' => -2,
++    '#description' => t("Only used with a custom path.<br />To use depth the path in the view has to have the path of '<base path for custom path>/%/%'. The two arguments must be 'Term ID (with depth)' and 'Depth modifier'.<br />Have this view setup <strong>before</strong> you create this taxonomy menu. Otherwise leave this field empty!"),
++    'default' => '',
++    '#type' => 'textfield',
++  );
++  $options['taxonomy_menu_path_custom_base_path'] = array(
++    '#title' => t('Base path for custom path'),
++    '#weight' => -3,
++    '#type' => 'textfield',
++    'default' => 'category',
++    '#description' => t("Only used with a custom path.<br />You need to have a view with path 'custom path/%' and an argument 'Term ID' <strong>before</strong> you create this taxonomy menu."),
++  );
++  $options['taxonomy_menu_path_custom_use_term_name'] = array(
++    '#title' => t('Use term name'),
++    '#weight' => -1,
++    '#type' => 'checkbox',
++    'default' => '',
++    '#description' => t("If checked, use term name instead of term ID."),
++  );
++
++  return $options;
++}
++
++/**
++ * Implementation of hook_taxonomy_menu_path().
++ */
++function taxonomy_menu_path_custom_taxonomy_menu_path() {
++  $output = array(
++    'taxonomy_menu_path_custom_path' => t('Custom path'),
++  );
++
++  return $output;
++}
++
++/**
++ * Callback for taxonomy_menu_path
++ */
++function taxonomy_menu_path_custom_path($vid, $tid) {
++  $base_path = variable_get(_taxonomy_menu_build_variable('taxonomy_menu_path_custom_base_path', $vid), 'category');
++  $depth = variable_get(_taxonomy_menu_build_variable('taxonomy_menu_path_custom_depth', $vid), '');
++
++  //if tid = 0 then we are creating the vocab menu item format will be taxonomy/term/$tid+$tid+$tid....
++  if ($tid == 0) {
++    //get all of the terms for the vocab
++    $vtid_objs = _taxonomy_menu_get_terms($vid);
++    $vtids = array();
++    foreach ($vtid_objs as $vtob) {
++      $vtids[] = $vtob->tid;
++    }
++    $end = implode(' ', $vtids);
++    $path = $base_path . '/' . $end;
++  }
++  else {
++    $path = $base_path . '/' . $tid;
++    if (variable_get(_taxonomy_menu_build_variable('display_descendants', $vid), FALSE)) {
++      //we wait to run this instead of durning the if above
++      //because we only wan to run it once.
++      $terms = taxonomy_get_tree($vid, $tid);
++      foreach ($terms as $term) {
++        $tids[] = $term->tid;
++      }
++      if ($tids) {
++        $end = implode(' ', $tids);
++        $path .= ' ' . $end;
++      }
++    }
++  }
++  if ($depth != '') {
++    $path .= '/' . $depth;
++  }
++  
++  if (variable_get(_taxonomy_menu_build_variable('taxonomy_menu_path_custom_use_term_name', $vid), FALSE)) {
++    $tids = ($tids) ? $tids : array($tid);
++   
++    foreach ($tids as $tid) {
++      $term = taxonomy_term_load($tid);
++      $names[] = strtolower(str_replace(' ', '-', $term->name));
++    }
++    
++    $path = $base_path . '/' . implode(' ', $names);
++  }
++  
++  return $path;
++}

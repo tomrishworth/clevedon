@@ -1,0 +1,2 @@
+[24-Aug-2012 05:02:32 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8208 bytes) in /home/asonline/public_html/clevedon/includes/module.inc on line 167
+[24-Aug-2012 05:02:34 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 71 bytes) in /home/asonline/public_html/clevedon/includes/cache.inc on line 447

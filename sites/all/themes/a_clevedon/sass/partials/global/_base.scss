@@ -1,0 +1,133 @@
+////////////////////////
+// Base Partials
+//
+// These files will be shared across all three of your output
+//  CSS files. Generally included here are only Compass Extension
+//  imports and imports for variables, functions, mixins, and extendables.
+////////////////////////
+
+////////////////////////
+// Compass Imports
+//
+// Aurora includes @import 'compass' so you don't need to.
+////////////////////////
+
+
+////////////////////////
+// Compass Extensions
+//
+// Aurora includes Toolkit, Breakpoint, Respond-to, Sassy Buttons, and Susy
+////////////////////////
+@import 'aurora/susy-grid';
+
+////////////////////////
+// Private Imports
+////////////////////////
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'extendables';
+
+// Reset
+@import 'normalize';
+
+
+// Flexible Grid
+
+$total-columns: 24;
+$column-width: 2em;
+$gutter-width: 0.5em;
+$grid-padding: $gutter-width;
+//$container-width: 60em;
+
+$show-grid-backgrounds: false;
+
+// Breakpoints
+
+
+$breakpoint-small-and-down: max-width 500px;
+$breakpoint-small-and-up: min-width 500px;
+$breakpoint-medium-to-large: 500px 700px;
+$breakpoint-large-and-up: min-width 700px;
+
+
+// Vertical Rhythm
+
+$base-font-size: 14px;
+$base-line-height: 17px;
+$default-rhythm-border-style: solid;
+$ie-font-ratio: 17px / 100%;
+$base-rhythm-unit: $base-line-height / $base-font-size * 1em;
+$base-leader: ($base-line-height - $base-font-size) * 1em / $base-font-size;
+$base-half-leader: $base-leader / 2;
+
+
+// Colors
+
+$main-color: #333333;
+$main-accent: #b9bd9c;
+$link-color: #4DA1BD;
+$link-accent: #7DCEE9;
+
+$dark-grey: #333333;
+$med-grey: #929390;
+$light-grey: #555555;
+$grey-hover: #bfbfbf;
+
+
+
+// Typography
+
+$main-font: "ff-meta-serif-web-pro", serif; //"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+$heading-font: "ff-meta-serif-web-pro", serif;
+$sans-serif: "ff-meta-web-pro", Sans-Serif;
+$script-font: "corner-store";
+$sans-serif: 'Lucida Grande', 'Lucida Sans', Helvetica, Arial, 'Bitstream Vera Sans', sans-serif;
+
+html{
+  font-size: 100%;
+}
+
+body{
+  font-family: $main-font;
+  color: $dark-grey;
+}
+
+
+a{
+  color: $main-accent;
+  text-decoration: none;
+  @include transition-property(color);
+  @include transition-duration(800ms);
+  &:hover{
+    @include transition-property(color);
+    @include transition-duration(300ms);
+    color: #000;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6{
+  font-family: $heading-font;
+  font-weight: bold;
+  @include trailer(1);
+}
+
+h1{
+  @include adjust-font-size-to(24px);
+  @include trailer(0.7);
+}
+
+h2{
+  @include adjust-font-size-to(18px);
+  @include trailer(0.7);
+}
+
+h3{
+  @include adjust-font-size-to(14px);
+}
+
+h4{
+  @include adjust-font-size-to(14px);
+}
+

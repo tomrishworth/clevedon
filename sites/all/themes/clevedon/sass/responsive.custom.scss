@@ -1,0 +1,99 @@
+
+// _base.scss imports _custom.scss and other partials.
+@import "base";
+
+/*
+ * responsive.custom.css is for custom media queries that are not set via the
+ * theme settings, such as cascading media queries.
+ *
+ * By default all the other responsive stylesheets used in Adaptivetheme use a
+ * "stacking method", however cascading media queries use a waterfall method so
+ * you can leverage the cascade and inheritance for all browsers that support
+ * media queries, regardless of screen size.
+ *
+ * @SEE http://zomigi.com/blog/essential-considerations-for-crafting-quality-media-queries/#mq-overlap-stack
+ *
+ * NOTE: this file loads by default, to disable got to your theme settings and
+ * look under the "CSS" settings tab.
+ */
+
+
+/*
+ * Really small screens and up
+ */
+/* @media only screen and (min-width: 220px) {} */
+
+
+/*
+ * Smartphone sizes and up
+ */
+/* @media only screen and (min-width: 320px) {} */
+
+
+/*
+ * Smartphone sizes and down
+ */
+@media only screen and (max-width: 480px) {
+  
+  /* 
+   * Float Region blocks example:
+   * In smaller screen sizes we can remove the float and widths so all blocks
+   * stack instead of displaying horizonally. The selector used here is an
+   * "attribute selector" which will match on any float block class. Use your
+   * inspector or Firebug to get the classes from the page output if you need
+   * more granular control over block alignment and stacking.
+   * 
+   * "Float Region blocks" is an extension for floating blocks in regions, see
+   * your themes appearance settings, under the Extensions tab.
+   */ 
+  .region[class*="float-blocks"] .block {
+    float: none;
+    width: 100%;
+  }
+  
+  #nav-wrap{
+	  position: relative;
+  }
+  
+  #menu-icon{
+	  color: #000;
+	  width: 42px;
+	  height: 30px;
+	  background: url(images/menu-icon.png) no-repeat 10px center;
+	  padding: 8px 10px 0 42px;
+	  cursor: pointer;
+	  border: 1px solid #666;
+	  display: block;
+	  &:hover{
+		  background-color: #f8f8f8;
+	  }
+	  &.active{
+		  background-color: #bbb;
+	  }
+  }
+  
+  #block-superfish-1 .content{
+	  clear:both;
+	  position: absolute;
+	  top:38px;
+	  width: 160px;
+	  z-index: 1000;
+	  padding: 5px;
+	  background: #f8f8f8;
+	  border: 1px solid #999;
+	  display: none;
+  }
+ 
+}
+
+
+/*
+ * Tablet sizes and up
+ */
+/* @media only screen and (min-width: 768px) {} */
+
+
+/*
+ * Desktops/laptops and up
+ */
+/* @media only screen and (min-width: 1025px) {} */

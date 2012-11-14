@@ -1,0 +1,4 @@
+name = My Module
+description = Testing stuff
+version = 0.1
+core = 7.x

@@ -1,0 +1,278 @@
+
+// _base.scss imports _custom.scss (variables and mixins) and other partials.
+@import "base";
+
+*{
+	@include box-sizing(border-box);
+}
+
+html {
+  background: $page;
+}
+
+body {
+  font-family: $sans-serif-small; // Set from _custom.scss font variables
+  font-size: 87.5%;
+}
+
+
+/* =============================================================================
+ *   HTML Elements
+ * ========================================================================== */
+
+
+
+a{
+	color: #0082CC;
+	text-decoration: none;
+}
+
+h1#page-title{
+	@include border-bottom;
+}
+
+
+
+/* =============================================================================
+ *   Header
+ * ========================================================================== */
+
+#header-wrapper{
+	background: $light;
+}
+
+#header{
+	padding: 20px 0;
+}
+
+#branding{
+	width: 185px;
+	float: left;
+}
+
+.region-header{
+	width: 79%;
+	float: left;
+	.block-superfish{
+		width: 75%;
+		float: left;
+		.block-inner{
+			margin: 0;
+		}
+	}
+	.block-search{
+		width: 24%;
+		float: left;
+	}
+}
+
+/* Search Bar */
+
+.block-search{
+	.form-type-textfield{
+		input{
+			border: 1px solid #ccc;
+			@include border-radius(10px);
+			padding: 7px;
+		}
+	}
+	.form-actions{
+		.form-submit{
+			margin-top: 5px;
+		}
+	}
+}
+
+/* SuperFish Menu */
+
+#nav-wrapper{
+	clear: both;
+	background: $light;
+	margin-bottom: 20px;
+}
+
+.sf-menu.sf-style-default{
+	margin-bottom: 0;
+	li, li.sfHover{
+		background: none;
+		&:hover{
+			background: $accent;
+		}
+		li{
+			background: $light;
+		}
+	/*	a{
+			padding: 1em;
+		}*/
+		a, a:visited{
+			color: #000;
+			border: none;
+		}
+		a:focus, a:hover, a.active{
+			background: $dark;
+			color: #fff;
+		}
+	}
+}
+
+/* Mobile Nav */
+
+#menu-icon{
+	display: none;
+}
+
+/* =============================================================================
+ *   Search results
+ * ========================================================================== */
+
+ol.search-results{
+	padding: 0;
+	margin: 0;
+	.search-snippet-info{
+		padding-left: 0;
+	}
+	.search-result{
+		border-bottom: 1px dotted #ccc;
+	}
+}
+
+/* =============================================================================
+ *   Local Directory Views
+ * ========================================================================== */
+
+.view-local-directory{
+	ul{
+		list-style-type: none;
+		padding: 0;
+		li{
+			margin: 0;
+			display: inline-block;
+			vertical-align: top;
+			width: 200px;
+			h2{
+				font-size: 1.2em;
+				margin: 0;
+			}
+			.description{
+				width: 200px;
+				font-size: 85%;
+			}
+		}
+	}
+}
+
+/* Accommodation View */
+
+.page-accommodation{
+	.view-local-directory{
+		li{
+			width: 350px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			.views-field-field-business-slideshow-images{
+				float: right;
+				margin-left: 10px;
+			}
+			h2{
+				@include border-bottom;
+				margin-bottom: 8px;
+			}
+			p{
+				font-size: 87%;
+				margin-bottom: 5px;
+				@include border-bottom;
+				padding-bottom: 5px;
+				width: 183px;
+			}
+			.views-field-field-business-phone, .views-field-field-business-address-line1{
+				font-size: 85%;
+				color: #777;
+			}
+		}
+	}
+}
+
+/* All Businesses View */
+
+.view-a-z-business-lisitings{
+	table{
+		border: none;
+		td{
+			padding: 3px 6px;
+		}
+	}
+}
+
+/* =============================================================================
+ *   Local Directory Node
+ * ========================================================================== */
+
+.node-business-lisiting{
+	.region-two-66-33-top{
+		margin-bottom: 30px;
+		padding-bottom: 30px;
+		border-bottom: 1px solid #ccc;
+	}
+	.region-two-66-33-first{
+		padding-right:30px;
+	}
+	.region-two-66-33-second{
+		background: #f6f6f6;
+		padding: 20px;
+	}
+	.region-two-66-33-bottom{
+		padding-top: 40px;
+	}
+	.group-business-details{
+		font-size: 90%;
+		h3{
+			margin-top: 0;
+			margin-bottom: 7px;
+			border-bottom: 1px solid #ccc;
+		}
+	}
+	.field-slideshow{
+		width: 528px;
+		float: left;
+		margin-right: 15px;
+	}
+	ul.field-slideshow-pager{
+		list-style-type: none;
+		li{
+			margin: 0;
+			margin-right: 10px;
+		}
+	}
+	.field-name-field-business-description{
+		p{
+			font-size: 115%;
+		}
+	}
+}
+
+
+/* =============================================================================
+ *   Footer 
+ * ========================================================================== */
+
+#footer-wrapper{
+	background: $dark;
+	margin-top: 50px;
+	padding-top: 20px;
+	color: #ccc;
+	a{
+		color: #fff;
+	}
+}
+
+/* Secondary Menu */
+
+#block-menu-menu-secondary-menu{
+	ul{
+		padding: 0;
+		text-align: right;
+		li{
+			display: inline;
+		}
+	}
+}
