@@ -205,7 +205,7 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'dev.clevedon',
+      'database' => 'clevedon',
       'username' => 'root',
       'password' => 'jadetree182',
       'host' => 'localhost',
