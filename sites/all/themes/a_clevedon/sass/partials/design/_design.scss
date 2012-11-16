@@ -25,12 +25,17 @@ html{
 
 #header{
   //background: url(../images/header-bg.jpg) repeat-x;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
+  .container{
+    background: url(../images/header-bg.png) no-repeat;
+    padding-bottom: 15px;
+  }
 }
 
 #site-name{
   margin: 0;
   padding-top: 20px;
+  padding-left: 10px;
   h1{
    @include adjust-leading-to (0.5);
   }
@@ -41,7 +46,6 @@ html{
   font-weight: normal;
   @include adjust-font-size-to(20px);
   @include adjust-leading-to (0.5);
-  letter-spacing:3px;
   margin-bottom: 0;
   margin-top: 0;
   color: #fff;
@@ -108,23 +112,22 @@ html{
 // Header menu
 
 #block-menu-block-3{
-  @include adjust-font-size-to (10.5px);
+  @include adjust-font-size-to (10px);
   a{
     color: $main-accent;
-    padding: 5px 9px;
-    margin-right: 10px;
-    background-color: rgba(0,0,0,0.5);
-    @include border-radius (3px);
+    padding: 5px 7px;
     &:hover{
       color: #fff;
-      background: #000;
     }
   }
   .last a{
     margin-right:0;
   }
   .menu{
-    float: right;
+    //float: right;
+    //background-color: rgba(0,0,0,0.5);
+    //@include border-radius (3px);
+    padding: 20px 0 0 10px;
   }
 }
 
@@ -147,15 +150,17 @@ html{
 // Search Block
 
 #block-search-form{
-  margin-bottom: 9px;
+  margin-bottom: 0;
+  display: block;
+  margin-top:10px;
   #search-block-form{
     margin: 0;
     float: right;
     #edit-search-block-form--2{
-      background: #000;
+      background: #222;
       color: $med-grey;
-      border: 1px solid #000;
-      width: 150px;
+      border: 1px solid #222;
+      width: 114px;
       @include border-top-left-radius(10px);
       @include border-bottom-left-radius (10px);
       @include border-bottom-right-radius(0);
@@ -163,7 +168,7 @@ html{
     }
     #edit-actions .form-submit{
       @include ir;
-      background: #000 url("../images/search-button.png") no-repeat 50% 50%;
+      background: #222 url("../images/search-button.png") no-repeat 50% 50%;
       width: 35px;
       height: 35px;
       border:none;
