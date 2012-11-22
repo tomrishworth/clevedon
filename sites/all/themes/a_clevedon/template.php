@@ -14,6 +14,12 @@ function a_clevedon_preprocess_html(&$vars) {
 
   // directory
   drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/directory.js');
+  
+  // Flexnav
+  drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/jquery.flexnav-min.js');
+
+  // Clevedon js
+  drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/clevedon.js');
 }
 
 

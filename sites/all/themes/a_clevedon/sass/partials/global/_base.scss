@@ -46,9 +46,10 @@ $show-grid-backgrounds: false;
 
 
 $breakpoint-small-and-down: max-width 500px;
-$breakpoint-small-and-up: min-width 500px;
-$breakpoint-medium-to-large: 500px 700px;
-$breakpoint-large-and-up: min-width 700px;
+$breakpoint-small-and-up: min-width 501px;
+$breakpoint-medium-to-large: 500px 800px;
+$breakpoint-large-and-up: min-width 801px;
+$breakpoint-large-and-down: max-width 800px;
 
 
 // Vertical Rhythm

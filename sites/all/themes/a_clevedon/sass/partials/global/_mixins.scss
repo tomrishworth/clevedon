@@ -43,3 +43,9 @@
 @mixin line{
   background: url("../images/line-light-grey.png") no-repeat left bottom;
 }
+
+// Text Shadow
+
+@mixin shadow{
+  text-shadow:(1px 1px 1px rgba(0,0,0,.8));
+}

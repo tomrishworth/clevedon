@@ -89,10 +89,13 @@
           <?php endif; ?>
         </hgroup><!-- #name-and-slogan -->
       <?php endif; ?>
-
-      <?php print render($page['header']); ?>
+      
+      <?php if ($page['header']) :?>
+        <div class="header-region-wrapper"><?php print render($page['header']); ?></div>
+      <?php endif; ?>
       
       <?php if ($page['menu']) :?>
+      <div class='menu-button'>Menu</div>
       <?php print render($page['menu']); ?>
     <?php endif; ?>
 

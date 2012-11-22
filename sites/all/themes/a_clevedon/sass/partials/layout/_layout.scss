@@ -13,6 +13,7 @@
   @include susy-grid-background;
 }
 
+// 500 and up
 @include breakpoint ($breakpoint-small-and-up){
   
   // Sidebar
@@ -36,54 +37,65 @@
     #name-and-slogan{
       @include span-columns (4, 24);
     }
-    .region-header{
+    .header-region-wrapper{
       @include span-columns (20 omega, 24);
     }
     #block-menu-block-3{
-      @include span-columns (16, 20);
+      clear: both;
       ul.menu{
-        margin: 0;
+        //margin: 0;
         li{
-          @include inline-list;
+         // @include inline-list;
         }
       }
     }
   }
-  /*
-  #block-menu-menu-secondary-menu{
-    @include span-columns (14, 19);
-    @include prefix (1);
-    ul.menu{
-      margin: 0;
-    }
-  }*/
-  #block-search-form{
-    @include span-columns (4 omega, 20);
-  }
+
 
   // Homepage
 
   .front{
-    .pane-events, .pane-views{
-      @include span-columns (6, 24);
+    // Row 1
+    .pane-block-14{
+      @include span-columns (12, 24);
     }
     .pane-block-8{
       @include span-columns (12 omega, 24)
     }
-    .pane-block-9{
+    
+    // Row 2
+    .pane-events{
       @include span-columns (6, 24);
     }
-    .region-three{
+    
+    .pane-news{
+      @include span-columns (6, 24);
+    }
+    
+    .pane-premium-listings{
+      @include span-columns (6 omega, 24);
+    }
+    
+    // Row 3
+    
+    .pane-block-9{
+      //@include span-columns (6, 24);
+    }
+    .pane-block-12{
+      @include span-columns (12, 24);
+    }
+    .pane-image-gallery{
+      @include span-columns (12 omega, 24);
+      li{
+        @include span-columns (6, 12);
+        @include nth-omega (2n);
+      }
+    }
+    
+    
+    // Clear Rows
+    .region-three, .region-four{
       clear: both;
-      .pane-events{
-        @include span-columns (6, 24);
-      }
-      .pane-block-12{
-        @include span-columns (6, 24);
-      }
-      .pane-premium-listings{
-        @include span-columns (6 omega, 24);
-      }
     }
   }
   
@@ -169,4 +181,71 @@
   }
 }
 
+// 800 and up
+@include breakpoint ($breakpoint-large-and-up){
+    .menu-button {
+	   	display: none;
+		}
+		#block-menu-block-3 .menu,
+		#block-menu-block-3, .menu{
+		display: block;	
+		}
+    #block-menu-block-3{
+    background: #000;
+    @include border-radius;
+    width: 100%;
+    ul.menu{
+      margin: 3px 0 0 16px;
+      padding: 0;
+      width: 100%;
+    }
+    li{
+      @include adjust-font-size-to (15px);
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      a{
+        padding: 5px 15px;
+        //display: block;
+        //float: left;
+        &:hover, &.active{
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// 800 and down
+@include breakpoint ($breakpoint-large-and-down){
+  #block-menu-block-3 .menu,
+  #block-menu-block-3 .menu{	
+  	display: none;
+  }
+  .menu-button {
+	  display: block;
+  }
+  .menu-block-3 .menu{
+    margin: 0;
+    padding: 0;
+    background: #222;
+    @include border-radius (5px);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  .menu-block-3 .menu li{
+    margin: 0;
+    padding: 0;
+  }
+  .menu-block-3 .menu li a {
+	display: block;
+	padding: 10px;
+	color: #ddd;
+	border-bottom: 1px solid #111;
+	&:hover{
+  	background: #111;
+	}			
+	}
+}
 
