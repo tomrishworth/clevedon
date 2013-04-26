@@ -1,0 +1,163 @@
+// Accordion
+
+/* UNLESS YOU KNOW WHAT YOU'RE DOING, DO NOT CHANGE THE FOLLOWING RULES */
+		
+/* UNLESS YOU KNOW WHAT YOU'RE DOING, DO NOT CHANGE THE FOLLOWING RULES */
+
+.easy-accordion{display:block;position:relative;overflow:hidden;padding:0;margin:0}
+.easy-accordion dt,.easy-accordion dd{margin:0;padding:0}
+.easy-accordion dt,.easy-accordion dd{position:absolute}
+.easy-accordion dt{margin-bottom:0;margin-left:0;z-index:5;cursor:pointer;
+/* fix chrome bug */-webkit-backface-visibility: hidden;
+/* CSS3 */ transform: rotate(-90deg); 
+/* Opera */ -o-transform: rotate(-90deg); 
+/* Webkit */ -webkit-transform: rotate(-90deg); 
+/* Firefox */ -moz-transform: rotate(-90deg); 
+/* Internet Explorer 9 */ -ms-transform: rotate(-90deg);
+}
+.lteIE8 .easy-accordion dt {/* Internet Explorer <9 */ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);cursor:pointer; }
+
+.easy-accordion dd{z-index:1;opacity:0;overflow:hidden}
+.easy-accordion dd.active{opacity:1;}
+.easy-accordion dd.no-more-active{z-index:2;opacity:1}
+.easy-accordion dd.active{z-index:3}
+.easy-accordion dd.plus{z-index:4}
+.easy-accordion .slide-number{position:absolute;bottom:0;font-weight:normal;font-size:1.1em;
+/* fix chrome bug */-webkit-backface-visibility: hidden;
+/* CSS3 */ transform: rotate(90deg);
+/* Opera */ -o-transform: rotate(90deg);
+/* Webkit */ -webkit-transform: rotate(90deg); 
+/* Firefox */ -moz-transform: rotate(90deg);  
+/* Internet Explorer 9 */ -ms-transform: rotate(90deg);
+}
+.lteIE8 .easy-accordion .slide-number{ /* Internet Explorer <9*/ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); }		 
+		 
+		/* FEEL FREE TO CUSTOMIZE THE FOLLOWING RULES */
+		
+		/*
+Skin Name: EasyAccordion Stitch
+Description: The skin used at slidedeck.com
+Author: Orman Clark
+Version: 1.0
+Tags: flexible, white, black, multi-color
+*/
+		 
+/* FEEL FREE TO CUSTOMIZE THE FOLLOWING RULES */
+
+dd p{line-height:120%}
+/*
+.view-accordion-slider *{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: border-box;
+}
+*/	
+.view-accordion-slider {
+    width: auto;
+	height: 415px;
+	padding: 10px 0 10px 0;
+    background: #393d40;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin: 0 0 0 0;
+} 
+.view-accordion-slider h2 {
+    font-size: 2.5em;
+    margin-top: 10px;
+}
+.view-accordion-slider dl {
+    width: auto;
+    height: 392px;
+    margin: 0 !important;
+    padding: 0 !important;
+} 
+.view-accordion-slider dt {
+  height: 56px;
+	line-height: 44px;
+	cursor: pointer;
+	text-align: right;
+	padding: 10px 32px 0 0;
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	background: url(../images/spines.jpg) 60% 0 no-repeat #393d40;
+  color: #fff !important;	
+  width: 415px !important;
+}
+.view-accordion-slider dt.hover{color:#68889b;}
+.view-accordion-slider dt.active.hover{color:#fff}
+.view-accordion-slider dd {
+	overflow: hidden;
+    //padding: 10px 30px;
+    //background: url('../images/slide.png') top right no-repeat #fff; 
+    width: 632px !important;
+    height: 367px !important;
+}
+.view-accordion-slider .slide-number {
+    color:#68889b;
+	left: 20px;
+	top: 15px;
+	font-weight:bold;
+} 
+.view-accordion-slider dt.spine_2 { background-position: 60% -61px; }
+.view-accordion-slider dt.spine_3 { background-position: 60% -121px; }
+.view-accordion-slider dt.spine_4 { background-position: 60% -181px; }
+.view-accordion-slider dt.spine_5 { background-position: 60% -241px; }
+.view-accordion-slider dt.spine_6 { background-position: 60% -301px; }
+.view-accordion-slider dt.spine_7 { background-position: 60% -361px; }
+.view-accordion-slider dt.spine_8 { background-position: 60% -421px; }
+.view-accordion-slider dt.spine_9 { background-position: 60% 0; }
+.view-accordion-slider dt.spine_10 { background-position: 60% -61px; }
+.view-accordion-slider .active .slide-number{color:#fff}
+.view-accordion-slider a{color:#68889b}
+.view-accordion-slider dd img{float:right;margin:0 0 0 8px;position:relative;top:-20px}
+.view-accordion-slider div.activeCorner { 
+	background: url('../images/corners.png') 0 0 no-repeat;
+	display: none;
+	position: absolute;
+	left: 90%;
+	width: 13px;
+	height: 16px;
+	top: 52px !important;
+	margin-left:-7px !important;
+	overflow: hidden;
+	zIndex: 20000;
+}	
+.view-accordion-slider .active div.activeCorner { display: inline-block; } 
+.view-accordion-slider div.activeCorner.spine_2 { background-position: -16px 0; }
+.view-accordion-slider div.activeCorner.spine_3 { background-position: -32px 0; }
+.view-accordion-slider div.activeCorner.spine_4 { background-position: -48px 0; }
+.view-accordion-slider div.activeCorner.spine_5 { background-position: -64px 0; }
+.view-accordion-slider div.activeCorner.spine_6 { background-position: -80px 0; }
+.view-accordion-slider div.activeCorner.spine_7 { background-position: -96px 0; }
+.view-accordion-slider div.activeCorner.spine_8 { background-position: -112px 0; }
+.view-accordion-slider div.activeCorner.spine_9 { background-position: -128px 0; }
+.view-accordion-slider div.activeCorner.spine_10 { background-position: -144px 0; }
+
+.view-accordion-slider{
+  dd{
+    padding: 20px;
+    .accordion-content{
+      position: absolute;
+      bottom:5px ;
+      left: 30px;
+      color: #fff;
+      h3{
+        margin-bottom: 0;
+        font-family: "corner-store";
+        font-weight: normal;
+        font-size: 3em;
+        text-align: center;
+        line-height: 100%;
+        @include shadow;
+      }
+      p{
+        margin: 0;
+      }
+    }
+  }
+}
