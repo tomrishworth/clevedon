@@ -21,7 +21,7 @@ function a_clevedon_preprocess_html(&$vars) {
   // Easy Accordion
   drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/jquery.easyaccordion.js');
   
-  drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/jquery.ba-resize.js');
+  drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/jquery.ba-resize.min.js');
   
   // Clevedon js
   drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/clevedon.js');
