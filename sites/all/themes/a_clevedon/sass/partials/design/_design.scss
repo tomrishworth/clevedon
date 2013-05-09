@@ -5,10 +5,11 @@
 
 html{
   background: url(../images/header-bg.jpg) center;
+  //background: url(../images/new-header-bg.jpg) center top no-repeat;
 }
 
 .page-food-wine{
-  background: url(../images/vineyard.jpg) no-repeat top center;
+  //background: url(../images/vineyard.jpg) no-repeat top center;
 }
 
 /*
@@ -25,15 +26,15 @@ html{
 */
 
 .page-events{
-  background: url(../images/things-to-do-bg.jpg) no-repeat top center;
+  //background: url(../images/things-to-do-bg.jpg) no-repeat top center;
 }
 
-.page-accommodation{
+/*.page-accommodation{
   background: url(../images/accommodation3.jpg) no-repeat top center;
   #content-prefix{
     height: 264px;
   }
-}
+}*/
 
 .page-accommodation, .page-food-wine, .page-homepage{
   #header{
@@ -535,14 +536,19 @@ html{
       //padding: 3px 6px;
       display: inline-block;
       margin-bottom: 3px;
-      background: url("../images/button-left.png") no-repeat left center;
+      //background: url("../images/button-left.png") no-repeat left center;
       height: 40px;
       a{
         //@include sassy-button ("glass", 3px, 14px, #333);
-        padding: 10px 15px 10px 10px;
+        padding: 10px 8px 10px 10px;
         display: block;
         color: #fff;
         background: url("../images/button-right.png") no-repeat right center;
+        span{
+          background: url("../images/button-left.png") no-repeat left center;
+          display: block;
+          padding: 10px 5px 10px 10px;
+        }
       }
     }
     .selected{
@@ -568,6 +574,12 @@ html{
     @include adjust-font-size-to(14px);
     @include adjust-leading-to(1);
     margin: 0;
+  }
+}
+
+.page-local-directory{
+  h1#page-title{
+    margin-bottom: 0;
   }
 }
 
@@ -689,7 +701,7 @@ html{
 }
 
 // Page headings
-
+/*
 .pane-block-3, #block-block-4, #block-block-5, #block-block-3, #block-block-11, #block-block-7{
   h1{
     text-transform: none;
@@ -706,6 +718,19 @@ html{
   p{
     @include trailer(1.5);
     color: #fff;
+  }
+}
+*/
+
+#block-block-5{
+  h1{
+    font-family: $script-font;
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 2em;
+  }
+  p{
+    @include trailer(1.5);
   }
 }
 

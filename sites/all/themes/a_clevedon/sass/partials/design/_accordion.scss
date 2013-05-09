@@ -55,14 +55,14 @@ dd p{line-height:120%}
 .view-accordion-slider {
     width: auto;
 	height: 415px;
-	padding: 10px 0 10px 0;
+	padding: 10px;
     background: #393d40;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
     -o-border-radius: 10px;
-    margin: 0 0 0 0;
+    margin: 0 0 20px 0;
 } 
 .view-accordion-slider h2 {
     font-size: 2.5em;
@@ -73,6 +73,7 @@ dd p{line-height:120%}
     height: 392px;
     margin: 0 !important;
     padding: 0 !important;
+    margin-left: -10px !important;
 } 
 .view-accordion-slider dt {
   height: 56px;
@@ -95,7 +96,7 @@ dd p{line-height:120%}
     //padding: 10px 30px;
     //background: url('../images/slide.png') top right no-repeat #fff; 
     width: 632px !important;
-    height: 367px !important;
+    height: 390px !important;
 }
 .view-accordion-slider .slide-number {
     color:#68889b;
@@ -114,7 +115,7 @@ dd p{line-height:120%}
 .view-accordion-slider dt.spine_10 { background-position: 60% -61px; }
 .view-accordion-slider .active .slide-number{color:#fff}
 .view-accordion-slider a{color:#68889b}
-.view-accordion-slider dd img{float:right;margin:0 0 0 8px;position:relative;top:-20px}
+.view-accordion-slider dd img{float:right;margin:0 0 0 8px;position:relative;}
 .view-accordion-slider div.activeCorner { 
 	background: url('../images/corners.png') 0 0 no-repeat;
 	display: none;
@@ -140,18 +141,20 @@ dd p{line-height:120%}
 
 .view-accordion-slider{
   dd{
-    padding: 20px;
+    //padding: 20px;
     .accordion-content{
       position: absolute;
-      bottom:5px ;
-      left: 30px;
+      width: 100%;
+      bottom:0px ;
+      left: 0px;
       color: #fff;
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px 10px 30px;
       h3{
-        margin-bottom: 0;
+        margin: 0 0 10px 0;
         font-family: "corner-store";
         font-weight: normal;
-        font-size: 3em;
-        text-align: center;
+        font-size: 2.4em;
         line-height: 100%;
         @include shadow;
       }

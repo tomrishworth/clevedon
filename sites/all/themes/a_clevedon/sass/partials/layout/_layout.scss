@@ -89,7 +89,7 @@
       li{
         @include span-columns (6, 12);
         //@include nth-omega (2n);
-        &:nth-child(2){
+        &:nth-child(2n){
           @include omega;
         }
       }
@@ -107,7 +107,7 @@
     ul li{
       @include span-columns (8, 24);
       //@include nth-omega(3n);
-      &:nth-child(3){
+      &:nth-child(3n){
         @include omega;
       }
       .views-field-field-business-slideshow-images{
@@ -123,7 +123,7 @@
     ul li{
       @include span-columns (8, 24);
       //@include nth-omega(3n);
-      &:nth-child(3){
+      &:nth-child(3n){
         @include omega;
       }
     }
@@ -153,7 +153,7 @@
     ul li{
       @include span-columns (12, 24);
       //@include nth-omega (2n);
-      &:nth-child(2){
+      &:nth-child(2n){
         @include omega;
       }
     }
@@ -188,7 +188,7 @@
         li{
           @include span-columns (2, 6);
           //@include nth-omega (3n);
-          &:nth-child(3){
+          &:nth-child(3n){
             @include omega;
           }
         }
