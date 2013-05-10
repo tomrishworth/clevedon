@@ -55,7 +55,7 @@
   // Homepage
 
   .front{
-    // Row 1
+    // Row 2
     .pane-block-14{
       @include span-columns (12, 24);
     }
@@ -63,7 +63,14 @@
       @include span-columns (12 omega, 24)
     }
     
-    // Row 2
+    // Row 3
+    .region-three .panel-pane{
+      @include span-columns (6, 24);
+      &:nth-child(4n){
+          @include omega;
+      }
+    }
+    /*
     .pane-events{
       @include span-columns (6, 24);
     }
@@ -72,10 +79,10 @@
       @include span-columns (6, 24);
     }
     
-    .pane-premium-listings{
+    .pane-block-13{
       @include span-columns (6 omega, 24);
     }
-    
+    */
     // Row 3
     
     .pane-block-9{
@@ -179,9 +186,9 @@
     .block{
       @include span-columns (6, 24);
       padding-right: 20px;
-    }
-    #block-panels-mini-footer-col-4-{
-      @include omega;
+      &:nth-child(4n){
+        @include omega;
+      }
     }
     #block-views-image-gallery-block-1{    
       .view-image-gallery{

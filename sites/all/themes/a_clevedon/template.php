@@ -28,3 +28,10 @@ function a_clevedon_preprocess_html(&$vars) {
 }
 
 
+
+// Remove Panel Separator from Panel layouts
+function a_clevedon_panels_default_style_render_region($vars) {
+  $output = '';
+  $output .= implode('', $vars['panes']);
+  return $output;
+}

@@ -309,6 +309,35 @@ html{
     margin-bottom: 30px;
     overflow: hidden;
   }
+  .region-three{
+    overflow: hidden;
+  }
+  .panel-pane{
+    padding-right: 20px;
+    h2{
+      @include line;
+      margin-top: 0;
+    }
+    @include list;
+    img{
+      @include img-frame;
+    }
+  }
+  .views-field-title{
+    @include adjust-font-size-to (12px);
+    a{
+      color: $dark-grey;
+    }
+  }
+  .views-field-field-tag-line, .views-field-field-date, .views-field-created, .views-field-field-date-time{
+    @include adjust-font-size-to (10px);
+    font-family: $sans-serif;
+  }
+  .views-field-field-date, .views-field-created, .views-field-field-date-time{
+    font-style: italic;
+    color: #999;
+  }  
+  /*
   .pane-events, .pane-news, .pane-block-8, .pane-block-12, .pane-premium-listings, .pane-image-gallery{
     h2{
       font-family: $script-font;
@@ -328,26 +357,12 @@ html{
       @include img-frame;
       margin-bottom: 5px;
     }
-    .views-field-title{
-        @include adjust-font-size-to (12px);
-      a{
-        color: $dark-grey;
-      }
-    }
-    .views-field-field-tag-line, .views-field-field-date, .views-field-created, .views-field-field-date-time{
-      @include adjust-font-size-to (10px);
-      font-family: $sans-serif;
-    }
-    .views-field-field-date, .views-field-created, .views-field-field-date-time{
-      font-style: italic;
-      color: #999;
-    }
+    
+
   }
+  */
   .view-image-gallery li{
     border-bottom: none;
-  }
-  .pane-events, .pane-news, .pane-block-12, .pane-image-gallery{
-    padding-right: 10px;
   }
 }
 
@@ -376,22 +391,27 @@ html{
     }
     li{
       height: 200px;
+      margin-left: 0;
+      padding: 20px;
+      background: $light-green url("../images/listing-bg.jpg") 0 78%;
+      margin-bottom: 20px;
+      border: 1px solid #d4e3da;
     }
     h2{
       a{
         color: $dark-grey;
       }
       //border-bottom: 1px dotted #ccc;
-      @include line;
+      @include line-dark;
       padding-bottom: 7px;
       margin-bottom: 10px;
-      margin-right: 20px;
+      //margin-right: 20px;
     }
     .details{
       @include adjust-font-size-to (10px);
       @include adjust-leading-to (1.3);
       color: #555;
-      padding-right: 20px;
+      //padding-right: 20px;
       ul{
         margin-top: 0;
         margin-bottom: 3px;
@@ -401,7 +421,9 @@ html{
           float: none;
           margin: 0 0 5px 0;
           display: block;
+          padding: 0;
           padding-left: 15px;
+          border: none;
         }
         li.phone{
           background: url("../images/phone-icon.png") no-repeat left 2px;
@@ -411,8 +433,15 @@ html{
         }
       }
       a{
-        @include sassy-button ("simple", 3px, 10px, $main-accent);
-        padding: 0.3em 1em;
+        //@include sassy-button ("simple", 3px, 10px, $green);
+        //padding: 0.3em 1em;
+        @include ir;
+        background: url(../images/read-more.png) no-repeat 0 0;
+        width: 112px;
+        height: 18px;
+        &:hover{
+          background-position: 0 100%;
+        }
       }
     }
     .views-field-field-business-slideshow-images{
@@ -473,6 +502,9 @@ html{
 // Local Directory
 
 .view-a-z-business-lisitings{
+  a{
+    color: $green;
+  }
   .directory-list{
     ul{
       padding: 0;
@@ -480,7 +512,11 @@ html{
       li{
         margin-left: 0;
         height: 165px;
-        padding-right: 20px;
+        padding: 20px;
+        background: $light-green url("../images/listing-bg.jpg") 0 78%;
+        margin-bottom: 20px;
+        //box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        border: 1px solid #d4e3da;
       }
     }
   }
@@ -488,8 +524,9 @@ html{
     h3{
       @include adjust-leading-to (1);
       margin-bottom: 5px;
-      border-bottom: 1px dotted #ccc;
+      border-bottom: 1px dotted #d4e3da;
       padding-bottom: 5px;
+      margin-top: 0;
     }
     .views-field-field-business-phone{
       background: url("../images/phone-icon.png") no-repeat left 2px;
@@ -553,7 +590,8 @@ html{
     }
     .selected{
       a{
-       // @include sassy-button ("glass", 3px, 14px, $main-accent);
+        //@include sassy-button ("glass", 3px, 14px, $main-accent);
+        //background: #000;
       }
     }
   }
@@ -775,9 +813,12 @@ html{
   }
 }
 .group_business_details{
-  background: #f8f8f8;
+  //background: #f8f8f8;
+  //background: url(../images/listing-bg.jpg);
+  background: $light-green;
   padding: 6%;
   margin-bottom: 15px;
+  border: 1px solid #d4e3da;
   @include adjust-font-size-to (12px);
   a{
     color: $dark-grey;

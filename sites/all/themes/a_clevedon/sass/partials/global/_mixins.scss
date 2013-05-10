@@ -44,8 +44,36 @@
   background: url("../images/line-light-grey.png") no-repeat left bottom;
 }
 
+@mixin line-dark{
+  background: url("../images/line-dark-grey.png") no-repeat left bottom;
+}
+
 // Text Shadow
 
 @mixin shadow{
   text-shadow:(1px 1px 1px rgba(0,0,0,.8));
+}
+
+@mixin zero{
+  padding: 0;
+  margin: 0;
+}
+
+@mixin divider{
+  background: url("../images/divider-shadow.png") no-repeat center top;
+  border-top: 1px solid #E8E8E7;
+}
+
+// Remove padding, margin & bullets from lists
+@mixin list{
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li{
+      margin: 0 0 10px 0;
+      padding: 0;
+      list-style-type: none;
+    }
+  }
 }
