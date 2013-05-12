@@ -53,16 +53,12 @@ dd p{line-height:120%}
 }
 */	
 .view-accordion-slider {
-    width: auto;
+  width: auto;
 	height: 415px;
 	padding: 10px;
-    background: #393d40;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    -o-border-radius: 10px;
-    margin: 0 0 20px 0;
+	background: #393d40;
+  border-radius: 10px;
+  margin: 0 0 20px 0;
 } 
 .view-accordion-slider h2 {
     font-size: 2.5em;
@@ -73,7 +69,7 @@ dd p{line-height:120%}
     height: 392px;
     margin: 0 !important;
     padding: 0 !important;
-    margin-left: -10px !important;
+    margin-left: -8px !important;
 } 
 .view-accordion-slider dt {
   height: 56px;
@@ -88,6 +84,7 @@ dd p{line-height:120%}
 	background: url(../images/spines.jpg) 60% 0 no-repeat #393d40;
   color: #fff !important;	
   width: 415px !important;
+  margin-left: -180px !important;
 }
 .view-accordion-slider dt.hover{color:#68889b;}
 .view-accordion-slider dt.active.hover{color:#fff}

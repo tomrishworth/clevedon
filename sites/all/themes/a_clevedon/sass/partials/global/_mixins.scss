@@ -77,3 +77,35 @@
     }
   }
 }
+
+// Listing Grid
+
+@mixin listing{
+  height: 170px;
+  margin-left: 0;
+  padding: 20px;
+  background: $light-green url("../images/listing-bg.jpg") 0 78%;
+  margin-bottom: 20px;
+  border: 1px solid #d4e3da;
+  a{
+    color: $green;
+  }
+  h3{
+    @include adjust-leading-to (1);
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #d4e3da;
+    padding-bottom: 5px;
+    margin-top: 0;
+    @include line-dark;
+  }
+  .views-field-view-node a{
+    margin-top: 10px;
+    @include ir;
+    background: url(../images/read-more.png) no-repeat 0 0;
+    width: 112px;
+    height: 18px;
+    &:hover{
+      background-position: 0 100%;
+    }
+  }
+}

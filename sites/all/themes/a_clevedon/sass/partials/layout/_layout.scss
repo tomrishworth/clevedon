@@ -91,6 +91,9 @@
     .pane-block-12{
       @include span-columns (12, 24);
     }
+    .pane-block-17{
+      @include span-columns (12 omega, 24);
+    }
     .pane-image-gallery{
       @include span-columns (12 omega, 24);
       li{
@@ -137,35 +140,54 @@
   } 
 
   // Region 50-25-25
+  /*
   .page-events{
     .activities{
-      @include span-columns (18, 24);
-      padding-right: 30px;
-    }
-    .events{
-      @include span-columns (6 omega, 24);
-    }
-    // Things to do
-    .view-local-directory{
-      ul{
-        li{
-          width: 100%;
+      @include span-columns (16, 24);
+      .view-local-directory li{
+        @include span-columns(8, 16);
+        &:nth-child(2n){
+          @include omega;
         }
       }
+    }
+    .events{
+      @include span-columns (8 omega, 24);
+    }
+  }
+  */
+  
+  .page-events .at-panel{
+    .region{
+      @include span-columns (8, 24);
+    }
+    .region-three-33-third{
+      @include omega;
+      padding-left: 10px;
+    }
+    .region-three-33-first{
+      padding-right: 10px;
+    }
+    .region-three-33-second{
+      padding: 0 10px;
+    }
+    .view-local-directory ul li {
+      width: 100%;
     }
   }
 
   // Food & Wine
   .page-food-wine .view-local-directory{
     ul li{
-      @include span-columns (12, 24);
+      @include span-columns (8, 24);
       //@include nth-omega (2n);
-      &:nth-child(2n){
+      &:nth-child(3n){
         @include omega;
       }
     }
     
   }
+  
 
   // Listing Node
   .node-type-business-lisiting{

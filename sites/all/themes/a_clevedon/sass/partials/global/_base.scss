@@ -102,11 +102,11 @@ body{
 a{
   color: $main-accent;
   text-decoration: none;
-  @include transition-property(color);
-  @include transition-duration(800ms);
+  //@include transition-property(color);
+  //@include transition-duration(800ms);
   &:hover{
-    @include transition-property(color);
-    @include transition-duration(300ms);
+    //@include transition-property(color);
+    //@include transition-duration(300ms);
     color: #000;
   }
 }

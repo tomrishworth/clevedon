@@ -5,6 +5,7 @@
 
 html{
   background: url(../images/header-bg.jpg) center;
+  //background: url(../images/dark_wood.png);
   //background: url(../images/new-header-bg.jpg) center top no-repeat;
 }
 
@@ -35,6 +36,7 @@ html{
     height: 264px;
   }
 }*/
+/*
 
 .page-accommodation, .page-food-wine, .page-homepage{
   #header{
@@ -44,6 +46,7 @@ html{
     background: url(../images/header-bg.jpg) center top;
   }
 }
+*/
 
 // Header
 
@@ -311,6 +314,14 @@ html{
   }
   .region-three{
     overflow: hidden;
+    img{
+      @include img-frame;
+    }
+  }
+  .region-four{
+    img{
+      @include img-frame;
+    }
   }
   .panel-pane{
     padding-right: 20px;
@@ -319,9 +330,6 @@ html{
       margin-top: 0;
     }
     @include list;
-    img{
-      @include img-frame;
-    }
   }
   .views-field-title{
     @include adjust-font-size-to (12px);
@@ -366,6 +374,31 @@ html{
   }
 }
 
+// Facebook News Feed
+
+.pane-block-17{
+  .news-item{
+    @include listing;
+    height: auto;
+    h3{
+      background: none;
+      font-weight: normal;
+    }
+    .fb-date{
+      p{
+        padding-top: 0;
+        margin-top: 0;
+        background: url("../images/line-dark-grey.png") no-repeat left bottom;
+        padding-bottom: 10px;
+        @include adjust-font-size-to (12px);
+      }
+    }
+    .photo img{
+      float: right;
+      margin-left: 10px;
+    }
+  }
+}
 
 // Accommodation View
 
@@ -390,7 +423,7 @@ html{
       }
     }
     li{
-      height: 200px;
+      height: 170px;
       margin-left: 0;
       padding: 20px;
       background: $light-green url("../images/listing-bg.jpg") 0 78%;
@@ -514,7 +547,7 @@ html{
         height: 165px;
         padding: 20px;
         background: $light-green url("../images/listing-bg.jpg") 0 78%;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         //box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
         border: 1px solid #d4e3da;
       }
@@ -527,6 +560,17 @@ html{
       border-bottom: 1px dotted #d4e3da;
       padding-bottom: 5px;
       margin-top: 0;
+      @include line-dark;
+    }
+    .views-field-view-node a{
+      margin-top: 10px;
+      @include ir;
+        background: url(../images/read-more.png) no-repeat 0 0;
+        width: 112px;
+        height: 18px;
+        &:hover{
+          background-position: 0 100%;
+        }
     }
     .views-field-field-business-phone{
       background: url("../images/phone-icon.png") no-repeat left 2px;
@@ -586,12 +630,23 @@ html{
           display: block;
           padding: 10px 5px 10px 10px;
         }
+        &:hover{
+          color: #702a2b;
+        }
       }
     }
     .selected{
       a{
         //@include sassy-button ("glass", 3px, 14px, $main-accent);
         //background: #000;
+        background: url(../images/green-btn-right.png) no-repeat right center;
+        color: #5f773c;
+        &:hover{
+          color: #000;
+        }
+        span{
+          background: url(../images/green-btn-left.png) no-repeat left center;
+        }
       }
     }
   }
@@ -624,6 +679,20 @@ html{
 // Things to do
 
 .page-events{
+  .pane-events-panel-pane-2, .pane-events-panel-pane-1{
+    ul{
+      @include zero;
+    }
+    li{
+      @include listing;
+      height: auto;
+      list-style-type: none;
+      .views-field-field-regular-event-description{
+        color: #777;
+        @include adjust-font-size-to (11px);
+      }
+    }
+  }
   .view-local-directory{
     .views-field-field-business-slideshow-images{
       float: right;
@@ -641,10 +710,12 @@ html{
       @include adjust-leading-to (1);
     }
     li{
-      margin-bottom: 30px;
+      @include listing;
+      ///height: 220px;
     }
     p.description{
       margin: 3px 0 5px 0;
+      @include adjust-font-size-to (11px);
     }
     .views-field-field-business-address-line1, .views-field-field-business-email, .views-field-field-business-website, .views-field-field-business-phone{
       @include adjust-font-size-to (11px);
@@ -676,8 +747,8 @@ html{
   }
   .events{
     h2, h2 a{
-      font-family: $script-font;
-      font-weight: normal;
+      //font-family: $script-font;
+      //font-weight: normal;
     }
     h2{
       @include adjust-font-size-to (20px);
@@ -713,8 +784,7 @@ html{
 .page-food-wine{
   .view-local-directory{
     li{
-      height: 185px;
-      padding-right: 20px;
+      @include listing;
     }
     h2{
       //border-bottom: 1px dotted #ccc;
@@ -726,6 +796,7 @@ html{
     }
     p.description{
       @include adjust-font-size-to (12px);
+      margin-bottom: 0;
     }
     .views-field-field-business-images{
       width: 150px;
@@ -972,6 +1043,30 @@ html{
   #block-block-9{
     iframe{
       @include img-frame (0px);
+    }
+  }
+  .weather{
+    @include list;
+    @include img-frame;
+    .weather-icon{
+      width: 115px;
+      float: left;
+    }
+    .weather-info{
+      float: left;
+      padding-top: 20px;
+      @include adjust-font-size-to (16px); 
+      line-height: 140%;
+      li{
+        margin-bottom: 0;
+        background: none;
+      }
+    }
+    .weather-updated{
+      clear: both;
+      display: block;
+      text-align: center;
+      color: #999;
     }
   }
 }
