@@ -68,12 +68,7 @@ span.marker {}
 
 
 /* Fieldsets */
-fieldset {
-  background: transparent;
-  border: 1px solid #dadada;
-  margin: 10px 0;
-  padding: 10px;
-}
+
 fieldset fieldset:last-child {
   margin-bottom: 0;
 }
@@ -215,7 +210,16 @@ input.form-text, textarea{
 
 
 #edit-actions .form-submit{
-  @include sassy-button("simple", 5px, 12px, $link-color, $link_accent);
+  //@include sassy-button("simple", 5px, 12px, $link-color, $link_accent);
+  background: $main-accent;
+  border: none;
+  font-family: $main-font;
+  padding: 10px 20px;
+  color: #333;
+  @include adjust-font-size-to (20px);
+  &:hover{
+    background: #9fa184
+  }
 }
 
 .form-item label {

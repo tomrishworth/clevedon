@@ -25,7 +25,22 @@
     }
     #sidebar-second{
       @include span-columns (6 omega, 24);
+      //@include prefix(1);
     }
+  }
+  
+  .explore-clevedon-section{
+      .sidebar-second{
+    #content{
+      @include span-columns (18, 24);
+      //@include suffix(1);
+    }
+    #sidebar-second{
+      @include span-columns (6 omega, 24);
+      @include prefix(1);
+    }
+  }
+
   }
 
   .front #content{
@@ -88,14 +103,14 @@
     .pane-block-9{
       //@include span-columns (6, 24);
     }
-    .pane-block-12{
+    .pane-hp-region-4-left{
       @include span-columns (12, 24);
     }
     .pane-block-17{
       @include span-columns (12 omega, 24);
     }
     .pane-image-gallery{
-      @include span-columns (12 omega, 24);
+      //@include span-columns (12 omega, 24);
       li{
         @include span-columns (6, 12);
         //@include nth-omega (2n);
@@ -200,6 +215,17 @@
     }
     .region-two-66-33-bottom{
       clear: both;
+    }
+  }
+  
+  // Walks
+  
+  .view-walks{
+    li{
+      @include span-columns (8, 16);
+      &:nth-child(2n){
+        @include omega;
+      }
     }
   }
 

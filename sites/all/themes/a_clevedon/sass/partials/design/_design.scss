@@ -189,6 +189,46 @@ html{
   }
   ul{
     @include bullet-list;
+    li.leaf, li.expanded, li.collapsed{
+      list-style-image: none;
+      list-style-type: none;
+      background: url(../images/sketch-arrow.png) no-repeat 0 10px;
+      padding-left: 24px;
+      ul li{
+        background: none;
+        padding: 5px 0;
+      }
+      &:hover, &.active-trail{
+        background: url(../images/sketch-arrow-hover.png) no-repeat 0 10px;
+        ul li{
+          background: none;
+          a{
+            color: #888;
+            &.active, &:hover{
+              color: #000;
+            }
+          }
+        }
+        a{
+          color: #000;
+        }
+      }
+      a{
+        display: block;
+      }
+    }
+    li ul li{
+      @include adjust-font-size-to (12px);
+      padding: 0;
+      border-bottom: 1px dotted #ccc;
+      padding: 5px 0;
+      &.first{
+        border-top: 1px dotted #ccc;
+      }
+      a{
+        color: #666;
+      }
+    }
   }
 }
 
@@ -254,7 +294,7 @@ html{
       @include border-top-right-radius(0);
       height: 30px;
     }
-    #edit-actions .form-submit{
+    .form-actions .form-submit{
       @include ir;
       background: #000 url("../images/search-button.png") no-repeat 50% 50%;
       width: 35px;
@@ -308,7 +348,7 @@ html{
 }
 
 .front{
-  .region-two{
+  .region-two, .region-three{
     margin-bottom: 30px;
     overflow: hidden;
   }
@@ -321,6 +361,11 @@ html{
   .region-four{
     img{
       @include img-frame;
+    }
+  }
+  .pane-block-13{
+    ul li{
+    margin-bottom: 3px !important;
     }
   }
   .panel-pane{
@@ -397,6 +442,42 @@ html{
       float: right;
       margin-left: 10px;
     }
+  }
+}
+
+
+
+// Explore Clevedon
+
+
+// Walks View
+.view-walks{
+  @include list;
+  ul li{
+    @include listing;
+    height: auto;
+    padding: 20px;
+    .field-name-body{
+      @include adjust-font-size-to (12px);
+    }
+  }
+  .field-name-node-link a{
+    margin-top: 10px;
+    @include ir;
+    background: url(../images/read-more.png) no-repeat 0 0;
+    width: 112px;
+    height: 18px;
+    &:hover{
+      background-position: 0 100%;
+    }
+  }
+}
+
+// Walks Node
+
+.node-walks-{
+  .field-name-field-walk-image img{
+    @include img-frame;
   }
 }
 
@@ -797,6 +878,7 @@ html{
     p.description{
       @include adjust-font-size-to (12px);
       margin-bottom: 0;
+      margin-top: 7px;
     }
     .views-field-field-business-images{
       width: 150px;
@@ -831,7 +913,17 @@ html{
 }
 */
 
-#block-block-5{
+.page-local-directory, .page-node-736, .page-node-133, .page-node-729, .page-node-756{
+  h1#page-title{
+    font-family: $script-font;
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 2em;
+  }
+}
+
+
+#block-block-5, #block-block-3, #block-block-4{
   h1{
     font-family: $script-font;
     font-weight: normal;
@@ -843,9 +935,6 @@ html{
   }
 }
 
-.page-node-133 #page-title{
-  display: none;
-}
 
 // Listing Node
 
@@ -992,6 +1081,72 @@ html{
   margin-top: 20px;
 }
 
+// Add Event
+
+// Fieldset styles
+
+
+fieldset{
+  position: relative;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fieldset-wrapper{
+  margin-top: 33px;
+  padding-top: 10px;
+  //border-top: 1px dotted #ccc;
+  background: url("../images/line-light-grey.png") repeat-x left top; 
+}
+
+legend{
+  float: left;
+}
+
+legend span{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#event-node-form{
+  .fieldset-legend{
+    font-weight: bold;
+    @include adjust-font-size-to (17px);
+  }
+  .field-name-field-date{
+    position: relative;
+    .fieldset-wrapper{
+      background: none;
+      margin-top: 20px;
+      padding-top: 0;
+    }
+    .fieldset-legend{
+      display: none;
+    }
+    .date-padding{
+      padding: 0;
+    }
+  }
+  .date-no-float{
+    padding-bottom: 20px;
+  }
+  .form-item{
+    label{
+      font-weight: bold;
+    }
+  }
+  .form-item-field-date-und-0-show-todate{
+    position: absolute;
+    bottom: 0px;
+    left:0;
+    label{
+      font-weight: normal;
+    }
+  }
+}
+
 // Footer
 
 #footer{
@@ -1001,9 +1156,10 @@ html{
   padding: 30px 0 40px 0;
   .block{
     h2{
-      border-bottom: 1px dotted #ccc;
+      //border-bottom: 1px dotted #ccc;
+      @include line;
       @include adjust-font-size-to (13px);
-      padding-bottom: 4px;
+      padding-bottom: 6px;
       margin-bottom: 10px;
       color: $dark-grey;
     }
