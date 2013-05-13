@@ -368,6 +368,27 @@ html{
     margin-bottom: 3px !important;
     }
   }
+  .pane-events-panel-pane-3{
+    ul li.views-row{
+      margin-bottom: 10px;
+    }
+    .views-field-title{
+      font-size: 100%;
+      line-height: 115%;
+      h3{
+        font-weight: normal;
+        font-size: 100%;
+        line-height: 115%;
+        margin: 0;
+      }
+      a{
+        color: $main-accent;
+        &:hover{
+          color: #000;
+        }
+      }
+    }
+  }
   .panel-pane{
     padding-right: 20px;
     h2{
@@ -1206,13 +1227,13 @@ legend span{
     @include img-frame;
     .weather-icon{
       width: 115px;
-      float: left;
+      margin: auto;
     }
     .weather-info{
-      float: left;
-      padding-top: 20px;
+      text-align: center;
       @include adjust-font-size-to (16px); 
       line-height: 140%;
+      margin-top: -10px;
       li{
         margin-bottom: 0;
         background: none;
@@ -1222,7 +1243,9 @@ legend span{
       clear: both;
       display: block;
       text-align: center;
-      color: #999;
+      color: #BBB;
+      font-family: Arial;
+      padding-bottom: 10px;
     }
   }
 }
