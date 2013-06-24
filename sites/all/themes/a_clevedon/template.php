@@ -10,7 +10,7 @@ function a_clevedon_preprocess_html(&$vars) {
   drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/loader.js');
 
   // typekit
-  drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/typekit.js');
+  //drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/typekit.js');
 
   // directory
   drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/directory.js');
@@ -25,6 +25,10 @@ function a_clevedon_preprocess_html(&$vars) {
   
   // Clevedon js
   drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/clevedon.js');
+  
+  // Masonry
+    drupal_add_js(drupal_get_path('theme', 'a_clevedon') . '/javascripts/jquery.masonry.js');
+
 }
 
 

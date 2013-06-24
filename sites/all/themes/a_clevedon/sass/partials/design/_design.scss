@@ -443,9 +443,14 @@ html{
 // Facebook News Feed
 
 .pane-block-17{
+  .pane-title{
+    background: url("../images/line-light-grey-920.png") no-repeat 0 100% !important;
+  }
   .news-item{
-    @include listing;
-    height: auto;
+    //@include listing;
+    padding: 20px;
+    background: $light-green url("../images/listing-bg.jpg") 0 78%;
+    border: 1px solid #d4e3da;
     h3{
       background: none;
       font-weight: normal;
@@ -459,9 +464,23 @@ html{
         @include adjust-font-size-to (12px);
       }
     }
+    p{
+      margin-top: 0;
+      @include adjust-font-size-to (12px);
+    }
     .photo img{
-      float: right;
-      margin-left: 10px;
+      //float: right;
+      //margin-left: 10px;
+      margin-bottom: 10px;
+    }
+    .photo{
+      display: block;
+      text-align: center;
+    }
+    .viewpost a{
+      @include adjust-font-size-to (12px);
+      color: #333;
+      font-weight: bold;
     }
   }
 }
@@ -617,6 +636,7 @@ html{
   }
 }
 
+
 // News Block
 
 #sidebar-second{
@@ -634,6 +654,29 @@ html{
   }
 }
 
+// Event Node
+
+.node-event{
+  .field-name-field-date{
+    margin-bottom: 5px;
+    @include adjust-font-size-to (15px);
+    .label-inline{
+      float: left;
+      font-weight: bold;
+    }
+  }
+  .field-name-field-description{
+    margin-bottom: 20px;
+  }
+  .field-name-field--event-image img{
+    @include img-frame (10px);
+  }
+  .group-left{
+    padding-right: 20px;
+  }
+}
+
+
 // Local Directory
 
 .view-a-z-business-lisitings{
@@ -646,7 +689,7 @@ html{
       margin: 0;
       li{
         margin-left: 0;
-        height: 165px;
+        height: 170px;
         padding: 20px;
         background: $light-green url("../images/listing-bg.jpg") 0 78%;
         margin-bottom: 10px;
@@ -673,6 +716,12 @@ html{
         &:hover{
           background-position: 0 100%;
         }
+    }
+    .views-field-field-business-facebook-page{
+      width: 45px;
+      float: right;
+      margin-left: 5px;
+      margin-top: 6px;
     }
     .views-field-field-business-phone{
       background: url("../images/phone-icon.png") no-repeat left 2px;
@@ -702,9 +751,11 @@ html{
     .views-field-field-business-address-line1,
     .views-field-field-business-email,
     .views-field-field-business-website{
-      word-break: break-all;
       padding-left: 20px;
       @include adjust-font-size-to (11px);
+    }
+    .views-field-field-business-email{
+      word-break: break-all;
     }
     .views-field-view-node{
       a{

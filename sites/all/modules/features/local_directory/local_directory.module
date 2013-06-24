@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Local Directory feature.
+ */
+
+include_once 'local_directory.features.inc';

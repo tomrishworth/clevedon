@@ -46,8 +46,18 @@
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
     <?php print $scripts; ?>
+    <script type="text/javascript" src="//use.typekit.net/isi4prr.js"></script>
+<!--<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
   </head>
   <body class="<?php print $classes; ?>" <?php print $body_attributes;?>>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=606722489339021";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div id="skip-link">
       <a href="#main-content" class="element-invisible element-focusable" role="link"><?php print t('Skip to main content'); ?></a>
     </div>
