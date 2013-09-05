@@ -415,14 +415,11 @@ html{
     }
     @include list;
   }
-  /*
+  
   .views-field-title{
-    @include adjust-font-size-to (12px);
-    a{
-      color: $dark-grey;
-    }
+    line-height: 115%;
   }
-  */
+
   .views-field-field-tag-line, .views-field-field-date, .views-field-created, .views-field-field-date-time{
     @include adjust-font-size-to (10px);
     font-family: $sans-serif;
@@ -670,6 +667,21 @@ html{
       margin-bottom: 10px;
       padding-bottom: 10px;
       border-bottom: 1px dotted #ccc;
+    }
+  }
+}
+
+// Sidebar Ads
+
+#sidebar-second{
+  .view-ads{
+    margin-top: 20px;
+    ul{
+      li{
+        background: none;
+        padding: 0;
+        margin-bottom: 20px
+      }
     }
   }
 }
@@ -992,6 +1004,13 @@ html{
         margin: 0;
         padding: 0;
         list-style-type: 0;
+      }
+    }
+  }
+  #block-system-main{
+    .pane-panels-mini{
+      img{
+        @include img-frame;
       }
     }
   }
