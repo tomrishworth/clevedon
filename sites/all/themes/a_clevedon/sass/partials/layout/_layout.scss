@@ -70,6 +70,14 @@
   // Homepage
 
   .front{
+    .view-ads{
+      ul{
+        li{
+          width: 33%;
+          float: left;
+        }
+      }
+    }
     // Row 2
     .pane-block-14{
       @include span-columns (12, 24);

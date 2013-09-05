@@ -340,6 +340,10 @@ html{
 
 // Homepage
 
+#block-system-main{
+  overflow: hidden;
+}
+
 .pane-block-14{
   p{
     font-size: 1.3em;
@@ -348,6 +352,20 @@ html{
 }
 
 .front{
+  .view-ads{
+  padding: 30px 0;
+    ul{
+      margin:0;
+      padding: 0;
+      li{
+        list-style-type: none;
+        //margin: 0;
+        margin-left: 0;
+        padding: 0;
+        text-align: center;
+      }
+    }
+  }
   .region-two, .region-three{
     margin-bottom: 30px;
     overflow: hidden;
