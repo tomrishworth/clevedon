@@ -105,6 +105,12 @@
     .pane-block-12{
       @include span-columns (12, 24);
     }
+    
+    .pane-block-19{
+      @include span-columns (12 omega, 24);
+    }
+    
+    /*
     .pane-block-17{
       clear: both;
       //@include span-columns (24 omega, 24);
@@ -129,7 +135,7 @@
         }
       }
     }
-    
+    */
     
     // Clear Rows
     .region-three, .region-four{
@@ -181,7 +187,7 @@
     }
   }
   */
-  
+  /*
   .page-events .at-panel{
     .region{
       @include span-columns (8, 24);
@@ -200,6 +206,7 @@
       width: 100%;
     }
   }
+  */
 
   // Food & Wine
   .page-food-wine .view-local-directory{
@@ -238,6 +245,17 @@
       }
     }
   }
+  
+  // Things to do page (3 cols)
+  .page-events{
+    .panel-pane{ 
+      @include span-columns (8, 24);
+      @include nth-omega (3n);
+      .panel-pane{
+        @include reset-columns;
+      }
+    }
+  }
 
   // Footer
   #footer{
@@ -264,6 +282,9 @@
 
 // 800 and up
 @include breakpoint ($breakpoint-large-and-up){
+    
+    
+    
     .menu-button {
 	   	display: none;
 		}
