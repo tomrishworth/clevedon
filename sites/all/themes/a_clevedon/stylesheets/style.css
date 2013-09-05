@@ -554,15 +554,8 @@ h4 {
   }
   /* line 75, ../sass/partials/layout/_layout.scss */
   .front .view-ads ul li {
-    width: 24.36975%;
+    width: 33%;
     float: left;
-    margin-right: 0.84034%;
-    display: inline;
-  }
-  /* line 184, ../../../../../../../.rvm/gems/ruby-1.9.3-p429/gems/susy-1.0.8/sass/susy/_grid.scss */
-  .front .view-ads ul li:nth-child(4n) {
-    float: right;
-    margin-right: 0;
   }
   /* line 82, ../sass/partials/layout/_layout.scss */
   .front .pane-block-14 {
