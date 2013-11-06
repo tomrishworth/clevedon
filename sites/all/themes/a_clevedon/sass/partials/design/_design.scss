@@ -504,16 +504,40 @@ html{
 
 
 
-// Explore Clevedon
+// Things to do page
 
+.walk-popup{
+  height: 150px;
+  width: 160px;
+}
 
+.pane-things-to-do-panel-pane-2,
+#block-views-walks-block{
+  .btn{
+    @include sassy-button ("simple", 3px, 18px, $dark-grey);
+    font-size: 17px;
+    padding: 5px 13px;
+  }
+}
+
+.pane-events-panel-pane-1{
+  .views-field-field-date{
+    @include adjust-font-size-to (10px);
+    font-family: $sans-serif;
+    font-style: italic;
+    color: #999;
+  }
+  .views-row{
+    margin-bottom: 5px;
+  }
+}
 // Walks View
 .view-walks{
   @include list;
   ul li{
-    @include listing;
+    //@include listing;
     height: auto;
-    padding: 20px;
+    //padding: 20px;
     .field-name-body{
       @include adjust-font-size-to (12px);
     }
@@ -539,6 +563,14 @@ html{
 }
 
 // Accommodation View
+
+#block-block-25{
+  .btn{
+    @include sassy-button ("simple", 3px, 18px, $dark-grey);
+    font-size: 17px;
+    padding: 5px 13px;
+  }
+}
 
 .page-accommodation{
   #map-link{
@@ -1001,7 +1033,7 @@ html{
       padding: 0;
       list-style-type: none;
       li{
-        margin: 0;
+        margin: 0 0 5px 0;
         padding: 0;
         list-style-type: 0;
       }
@@ -1253,7 +1285,7 @@ fieldset{
   margin-top: 33px;
   padding-top: 10px;
   //border-top: 1px dotted #ccc;
-  background: url("../images/line-light-grey.png") repeat-x left top; 
+  //background: url("../images/line-light-grey.png") repeat-x left top; 
 }
 
 legend{
@@ -1303,6 +1335,54 @@ legend span{
   }
 }
 
+// Add Business Listing
+
+#business-lisiting-node-form{
+  #edit-field-business-description{
+    .cke_1{
+      display: none;
+    }
+  }
+  .group_business_details{
+    background: none;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  #node_business_lisiting_form_group_address_physical{
+  }
+  fieldset{
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+  }
+  legend{
+    position: relative;
+    top: 0;
+    width: 100%;
+    left: 0;
+    font-weight: bold;
+  }
+  .fieldset-wrapper{
+    margin-top: 0;
+    padding-top:30px;
+  }
+}
+
+// Hide some fields not relevant to anon users
+.not-logged-in{
+  #business-lisiting-node-form{
+    #edit-field-listing-type,
+    #edit-field-business-description-und-0-format,
+    #edit-field-this-listing-is-a-regular-,
+    #edit-field-business-images,
+    #edit-field-business-slideshow-images{
+      display: none;
+    }
+  }
+}
+
 // Footer
 
 #footer{
@@ -1327,6 +1407,9 @@ legend span{
     }
     ul{
       @include bullet-list;
+      li{
+        margin-bottom: 3px;
+      }
     }
   }
   .view-image-gallery{
@@ -1339,7 +1422,7 @@ legend span{
     }
   }
   .content{
-    @include adjust-font-size-to (11px);
+    @include adjust-font-size-to (13px);
   }
   #block-block-13{
     p{
@@ -1381,6 +1464,22 @@ legend span{
       color: #BBB;
       font-family: Arial;
       padding-bottom: 10px;
+      @include adjust-font-size-to (11px);
+    }
+  }
+}
+
+#block-block-23{
+  text-align: center;
+  h3{
+    //font-family: $script-font;
+    color: #000;
+    font-size: 21px;
+    line-height: 22px;
+    margin-bottom: 5px;
+    span{
+      font-size: 13px;
+      font-weight: normal;
     }
   }
 }
@@ -1400,5 +1499,9 @@ legend span{
       color: #fff;
     }
   }
+}
+
+._4s7c{
+  border: none;
 }
 
