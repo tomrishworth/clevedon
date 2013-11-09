@@ -95,7 +95,7 @@
       <?php endif; ?>
       
       <?php if ($page['menu']) :?>
-      <div class='menu-button'>Menu</div>
+      <!--<div class='menu-button'>Menu</div>-->
       <?php print render($page['menu']); ?>
     <?php endif; ?>
 

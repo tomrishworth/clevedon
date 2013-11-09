@@ -109,3 +109,16 @@
     }
   }
 }
+
+// Subtle button
+
+@mixin s-btn{
+    padding: 2px 5px 1px;
+    border: 1px solid #B9BD9C;
+    border-radius: 3px;
+    margin-right: 5px;
+    @include adjust-font-size-to (10px);
+    &:hover{
+      border: 1px solid #333;
+    }
+}

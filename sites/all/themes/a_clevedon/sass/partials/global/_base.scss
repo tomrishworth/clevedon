@@ -44,12 +44,8 @@ $show-grid-backgrounds: false;
 
 // Breakpoints
 
-
-$breakpoint-small-and-down: max-width 500px;
-$breakpoint-small-and-up: min-width 501px;
-$breakpoint-medium-to-large: 500px 800px;
-$breakpoint-large-and-up: min-width 801px;
-$breakpoint-large-and-down: max-width 800px;
+$breakpoint-small-and-up: min-width 500px;
+$breakpoint-large-and-up: min-width 800px;
 
 
 // Vertical Rhythm
@@ -83,7 +79,7 @@ $grey-hover: #bfbfbf;
 
 // Typography
 
-$main-font: "ff-meta-serif-web-pro", serif; //"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+$main-font: "ff-meta-serif-web-pro", serif; 
 $heading-font: "ff-meta-serif-web-pro", serif;
 $sans-serif: "ff-meta-web-pro", Sans-Serif;
 $script-font: "corner-store";
@@ -102,11 +98,7 @@ body{
 a{
   color: $main-accent;
   text-decoration: none;
-  //@include transition-property(color);
-  //@include transition-duration(800ms);
   &:hover{
-    //@include transition-property(color);
-    //@include transition-duration(300ms);
     color: #000;
   }
 }

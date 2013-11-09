@@ -1,6 +1,27 @@
+
 var $ = jQuery;
+/*
+jQuery(window).resize(function() {
+var pageWidth = $(window).width(); 
+
+    if( $(window).width()> 800){
+
+  $('.view-accordion-slider').easyAccordion({ 
+			autoStart: true, 
+			slideInterval: 30000,
+			pauseOnHover: true,
+			actOnHover: false,
+			continuous: true,
+			slideNum:false
+	});
+
+    }
+});
+
+*/
+
 jQuery(document).ready(function($){
-  $(".menu-block-3 .menu").flexNav();
+  //$(".menu-block-3 .menu").flexNav();
   $('.form-type-bef-link a').each(function(){
     $(this).wrapInner("<span></span>");
   });

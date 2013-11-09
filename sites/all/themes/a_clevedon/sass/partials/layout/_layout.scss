@@ -13,6 +13,30 @@
   @include susy-grid-background;
 }
 
+// Header
+#header{
+  #name-and-slogan{
+    @include span-columns (12, 24);
+  }
+  .header-region-wrapper{
+    @include span-columns (12 omega, 24);
+  }
+  #block-menu-block-3{
+    clear: both;
+  }
+}
+
+// Homepage Row 3
+.region-three .panel-pane{
+  /*@include span-columns (12, 24);
+  &:nth-child(2n){
+      @include omega;
+  }*/
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
 // 500 and up
 @include breakpoint ($breakpoint-small-and-up){
   
@@ -25,7 +49,6 @@
     }
     #sidebar-second{
       @include span-columns (6 omega, 24);
-      //@include prefix(1);
     }
   }
   
@@ -33,7 +56,6 @@
       .sidebar-second{
     #content{
       @include span-columns (18, 24);
-      //@include suffix(1);
     }
     #sidebar-second{
       @include span-columns (6 omega, 24);
@@ -55,26 +77,37 @@
     .header-region-wrapper{
       @include span-columns (20 omega, 24);
     }
+    .region-header{
+      margin-left: 20px;
+    }
     #block-menu-block-3{
       clear: both;
-      ul.menu{
-        //margin: 0;
-        li{
-         // @include inline-list;
+      li{
+        @include adjust-font-size-to (15px);
+        a{
+          padding: 5px 8px; 
         }
       }
     }
   }
-
-
+  
   // Homepage
+  
+  .pane-block-14{
+    h1{
+      display: block !important;
+    }
+    p{
+      font-size: 1.3em !important;
+    }
+  }
 
   .front{
     .view-ads{
       ul{
         li{
-          width: 33%;
-          float: left;
+          @include span-columns (8, 24);
+          @include nth-omega(3n);
         }
       }
     }
@@ -88,62 +121,16 @@
       padding-right: 0 !important;
     }
     
-    // Row 3
-    .region-three .panel-pane{
-      @include span-columns (6, 24);
-      &:nth-child(4n){
-          @include omega;
-      }
-    }
-    /*
-    .pane-events{
-      @include span-columns (6, 24);
-    }
     
-    .pane-news{
-      @include span-columns (6, 24);
-    }
     
-    .pane-block-13{
-      @include span-columns (6 omega, 24);
-    }
-    */
-    // Row 3
-    
+    // Row 4
     .pane-block-12{
       @include span-columns (12, 24);
     }
-    
     .pane-block-19{
       @include span-columns (12 omega, 24);
     }
     
-    /*
-    .pane-block-17{
-      clear: both;
-      //@include span-columns (24 omega, 24);
-      .news-item{
-        width: 290px;
-        margin-bottom: 15px;
-        //margin-right: 10px;
-        //@include span-columns (8, 24);
-        &:nth-child(3){
-          //@include omega;
-          margin-right: 0;
-        }
-      }
-    }
-    .pane-image-gallery{
-      @include span-columns (12 omega, 24);
-      li{
-        @include span-columns (6, 12);
-        //@include nth-omega (2n);
-        &:nth-child(2n){
-          @include omega;
-        }
-      }
-    }
-    */
     
     // Clear Rows
     .region-three, .region-four{
@@ -155,7 +142,6 @@
   .view-local-directory{
     ul li{
       @include span-columns (8, 24);
-      //@include nth-omega(3n);
       &:nth-child(3n){
         @include omega;
       }
@@ -171,56 +157,17 @@
    .view-a-z-business-lisitings{
     ul li{
       @include span-columns (8, 24);
-      //@include nth-omega(3n);
       &:nth-child(3n){
         @include omega;
       }
     }
   } 
 
-  // Region 50-25-25
-  /*
-  .page-events{
-    .activities{
-      @include span-columns (16, 24);
-      .view-local-directory li{
-        @include span-columns(8, 16);
-        &:nth-child(2n){
-          @include omega;
-        }
-      }
-    }
-    .events{
-      @include span-columns (8 omega, 24);
-    }
-  }
-  */
-  /*
-  .page-events .at-panel{
-    .region{
-      @include span-columns (8, 24);
-    }
-    .region-three-33-third{
-      @include omega;
-      padding-left: 10px;
-    }
-    .region-three-33-first{
-      padding-right: 10px;
-    }
-    .region-three-33-second{
-      padding: 0 10px;
-    }
-    .view-local-directory ul li {
-      width: 100%;
-    }
-  }
-  */
 
   // Food & Wine
   .page-food-wine .view-local-directory{
     ul li{
       @include span-columns (8, 24);
-      //@include nth-omega (2n);
       &:nth-child(3n){
         @include omega;
       }
@@ -242,19 +189,7 @@
       clear: both;
     }
   }
-  
-  // Walks
-  /*
-  .view-walks{
-    li{
-      @include span-columns (8, 16);
-      &:nth-child(2n){
-        @include omega;
-      }
-    }
-  }
-  */
-  
+    
   // Things to do page (3 cols)
   .page-events{
     .panel-pane{ 
@@ -269,11 +204,18 @@
   // Footer
   #footer{
     .block{
-      @include span-columns (6, 24);
+      @include span-columns (12, 24);
+      @include nth-omega(2n);
       padding-right: 20px;
-      &:nth-child(4n){
-        @include omega;
-      }
+    }
+    #block-menu-menu-footer-menu-mobile{
+      display: none;
+    }
+    #block-block-9,
+    #block-weather-system-1,
+    #block-block-23,
+    #block-block-6{
+      display: block;
     }
     #block-views-image-gallery-block-1{    
       .view-image-gallery{
@@ -291,72 +233,41 @@
 
 // 800 and up
 @include breakpoint ($breakpoint-large-and-up){
-    
-    
-    
-    .menu-button {
-	   	display: none;
-		}
-		#block-menu-block-3 .menu,
-		#block-menu-block-3, .menu{
-		display: block;	
-		}
-    #block-menu-block-3{
-    background: #000;
-    @include border-radius;
-    width: 100%;
+  #block-menu-block-3{
     ul.menu{
       margin: 3px 0 0 16px;
-      padding: 0;
-      width: 100%;
     }
-    li{
-      @include adjust-font-size-to (15px);
-      display: inline-block;
-      margin: 0;
-      padding: 0;
-      a{
-        padding: 5px 15px;
-        //display: block;
-        //float: left;
-        &:hover, &.active{
-          color: #fff;
-        }
-      }
+  }
+  #block-menu-menu-secondary-menu{
+    display: block !important;
+  }
+  .pane-block-14 p{
+    padding-right: 60px;
+  }
+  
+  //Homepage
+  .pane-accordion-slider{
+    display: block !important;
+  }
+  
+  .pane-mobile-slider{
+    display: none;
+  }
+  
+  
+  // Row 3
+  .region-three .panel-pane{
+    @include remove-nth-omega(2n);
+    @include span-columns (6, 24);
+    @include nth-omega(4n);
+  }
+  
+  #footer{
+    .block{
+      @include remove-nth-omega(2n);
+      @include span-columns (6, 24);
+      @include nth-omega(4n);
+      padding-right: 20px;
     }
   }
 }
-
-// 800 and down
-@include breakpoint ($breakpoint-large-and-down){
-  #block-menu-block-3 .menu,
-  #block-menu-block-3 .menu{	
-  	display: none;
-  }
-  .menu-button {
-	  display: block;
-  }
-  .menu-block-3 .menu{
-    margin: 0;
-    padding: 0;
-    background: #222;
-    @include border-radius (5px);
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding-box;
-    background-clip: padding-box;
-  }
-  .menu-block-3 .menu li{
-    margin: 0;
-    padding: 0;
-  }
-  .menu-block-3 .menu li a {
-	display: block;
-	padding: 10px;
-	color: #ddd;
-	border-bottom: 1px solid #111;
-	&:hover{
-  	background: #111;
-	}			
-	}
-}
-
