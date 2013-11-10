@@ -74,14 +74,14 @@ html{
     overflow: hidden;
   }
   li{
-    @include adjust-font-size-to (15px);
+    @include adjust-font-size-to (14px);
     display: inline-block;
     margin: 0;
     padding: 0;
     width: 48%;
     float: left;
     a{
-      padding: 5px 11px;
+      padding: 5px 10px;
       &:hover, &.active{
         color: #fff;
       }
@@ -177,6 +177,19 @@ html{
       }
       a{
         color: #666;
+      }
+    }
+  }
+  .pager li{
+    background: none;
+    border-bottom: none !important;
+  }
+  .view-news{
+    .view-footer{
+      padding-top: 10px;
+      text-align: center;
+      a{
+        @include s-btn;
       }
     }
   }
@@ -1191,6 +1204,23 @@ legend span{
     #edit-field-business-slideshow-images{
       display: none;
     }
+  }
+}
+
+// Add news page
+
+#news-node-form{
+  .form-item-field-news-body-und-0-value{
+     .cke_1{
+      display: none;
+    }
+  }
+  #edit-field-news-body-und-0-format{
+    display: none;
+  }
+  #edit-field-news-image,
+  #edit-field-news-file-attachements{
+    display: none;
   }
 }
 
