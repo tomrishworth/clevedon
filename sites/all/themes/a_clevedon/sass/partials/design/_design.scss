@@ -267,6 +267,7 @@ html{
 
 #block-system-main{
   overflow: hidden;
+  clear: both;
 }
 
 .pane-accordion-slider{
@@ -542,6 +543,7 @@ html{
     }
   }
   .view-local-directory{
+    clear: both;
     .view-header{
       background: #f8f8f8;
       padding: 30px;
@@ -851,6 +853,7 @@ html{
 }
 
 .view-local-directory{
+  clear: both; 
   ul{
     padding: 0;
   }
