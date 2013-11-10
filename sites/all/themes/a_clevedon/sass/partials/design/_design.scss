@@ -1,5 +1,9 @@
 @import 'accordion';
 
+.s-btn{
+  @include s-btn;
+}
+
 html{
   background: url(../images/header-bg.jpg) center;
 }
@@ -1239,6 +1243,9 @@ legend span{
       width: 100%;
       td{
         padding: 8px;
+      }
+      th{
+        padding: 5px 8px;
       }
       tr.even, tr.odd{
         background: #fff;
