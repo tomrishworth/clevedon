@@ -209,6 +209,17 @@
       }
     }
   }
+  
+  //Dashboard
+  .page-dashboard{
+    .region-two-66-33-first{
+      @include span-columns (16, 24);
+      @include suffix (1);
+    }
+    .region-two-66-33-second{
+      @include span-columns (8 omega, 24);
+    }
+  }
 
   // Footer
   #footer{

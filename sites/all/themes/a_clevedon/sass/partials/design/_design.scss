@@ -1228,6 +1228,66 @@ legend span{
   }
 }
 
+.page-dashboard{
+  h2, h3, .two-66-33{
+    font-family: $sans-serif;
+  }
+  .views-table{
+    @include adjust-font-size-to (11px);
+  }
+  table{
+      width: 100%;
+      td{
+        padding: 8px;
+      }
+      tr.even, tr.odd{
+        background: #fff;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+    fieldset.collapsible .fieldset-legend{
+      display: none;
+    }
+    .vbo-views-form{
+      #edit-select,
+      #edit-select--2,
+      #edit-select--3{
+        position: absolute;
+        bottom: 20px;
+        left:20px;
+      }
+      .fieldset-wrapper{
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .form-submit{
+      /*background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-right: 3px;
+      &:hover{
+        cursor: pointer;
+        background: #ccc;
+      }*/
+      @include sassy-button ("simple", 8px, 12px, #333);
+      @include adjust-font-size-to (13px);
+      margin-right: 5px;
+    }
+    .panel-pane{
+      border: 1px solid #ccc;
+      background: #f0f0f0;
+      padding: 20px 20px 50px 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      position: relative;
+      .pane-title{
+        margin: 0 0 10px 0;
+      }
+    }
+}
+
 // Footer
 
 #footer{
