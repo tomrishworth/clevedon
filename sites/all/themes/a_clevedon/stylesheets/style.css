@@ -810,7 +810,13 @@ h4 {
     margin-right: 0;
   }
 
-  /* line 276, ../sass/partials/layout/_layout.scss */
+  /* line 277, ../sass/partials/layout/_layout.scss */
+  .front .pane-events-panel-pane-4,
+  .front .pane-block-12 {
+    padding-right: 20px;
+  }
+
+  /* line 283, ../sass/partials/layout/_layout.scss */
   #footer .block {
     width: 24.36975%;
     float: left;

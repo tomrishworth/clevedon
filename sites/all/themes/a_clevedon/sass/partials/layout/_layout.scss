@@ -272,6 +272,13 @@
     @include nth-omega(4n);
   }
   
+  .front{
+    .pane-events-panel-pane-4,
+    .pane-block-12{
+      padding-right: 20px;
+    }
+  }
+  
   #footer{
     .block{
       @include remove-nth-omega(2n);
