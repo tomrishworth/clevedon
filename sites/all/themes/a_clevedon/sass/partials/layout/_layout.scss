@@ -82,7 +82,12 @@
     }
     #block-menu-block-3{
       clear: both;
+      .menu{
+        padding: 0;
+      }
       li{
+        width: auto;
+        float: none;
         @include adjust-font-size-to (15px);
         a{
           padding: 5px 8px; 

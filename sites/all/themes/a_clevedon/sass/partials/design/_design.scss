@@ -48,7 +48,7 @@ html{
 }
 
 // Main Menu
-
+/*
 .menu-button {
   clear: both;
 	padding: 1em;
@@ -60,25 +60,28 @@ html{
 	cursor: pointer;
 	@include border-radius (5px);
 }
+*/
 
 #block-menu-block-3{
   background: #000;
   @include border-radius;
   width: 100%;
+  overflow: hidden;
   ul.menu{
-    //margin: 3px 0 0 16px;
-    padding: 0;
+    padding: 10px;
+    margin: 0;
     width: 100%;
+    overflow: hidden;
   }
   li{
     @include adjust-font-size-to (15px);
     display: inline-block;
     margin: 0;
     padding: 0;
+    width: 48%;
+    float: left;
     a{
       padding: 5px 11px;
-      //display: block;
-      //float: left;
       &:hover, &.active{
         color: #fff;
       }
