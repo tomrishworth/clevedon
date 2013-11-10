@@ -279,7 +279,7 @@ html{
     min-height: 100px;
     padding: 0 10px;
     @include adjust-font-size-to (14px);
-    @include adjust-leading-to (0.8);
+    @include adjust-leading-to (1);
     p{
       margin: 0;
     }
@@ -319,6 +319,11 @@ html{
       @include img-frame;
     }
   }
+  .pane-news-panel-pane-4,
+  .pane-events-panel-pane-3{
+    padding-right: 20px;
+  }
+  
   .region-four{
     img{
       @include img-frame;
@@ -351,10 +356,11 @@ html{
     }
   }
   .panel-pane{
-    padding-right: 20px;
+    //padding-right: 20px;
     h2{
       @include line;
       margin-top: 0;
+      @include adjust-font-size-to(15px);
     }
     @include list;
   }
@@ -1285,10 +1291,37 @@ legend span{
   }
 }
 
+#block-menu-menu-footer-menu-mobile .content{
+  ul{
+    list-style-type: none;
+    li{
+      margin: 0;
+      padding: 0;
+      background: none;
+      width: 48%;
+      float: left;
+      list-style-type: none;
+      list-style-image: none;
+      a{
+        border: 1px solid $main-accent;
+        padding: 10px;
+        margin: 3px;
+        border-radius: 3px;
+        display: block;
+        &:hover{
+        border: 1px solid #333;
+      }
+      }
+    }
+  }
+}
+
+// Block to hide from mobile users
 #block-block-9,
 #block-weather-system-1,
 #block-block-23,
-#block-block-6{
+#block-block-6,
+.pane-block-19{
   display: none
 }
 

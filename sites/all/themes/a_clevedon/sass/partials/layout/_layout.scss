@@ -101,6 +101,10 @@
       font-size: 1.3em !important;
     }
   }
+  
+  .front .panel-pane h2{
+    @include adjust-font-size-to(18px);
+  }
 
   .front{
     .view-ads{
@@ -214,7 +218,8 @@
     #block-block-9,
     #block-weather-system-1,
     #block-block-23,
-    #block-block-6{
+    #block-block-6,
+    .pane-block-19{
       display: block;
     }
     #block-views-image-gallery-block-1{    
