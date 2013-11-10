@@ -74,7 +74,7 @@ html{
     overflow: hidden;
   }
   li{
-    @include adjust-font-size-to (14px);
+    @include adjust-font-size-to (13px);
     display: inline-block;
     margin: 0;
     padding: 0;
