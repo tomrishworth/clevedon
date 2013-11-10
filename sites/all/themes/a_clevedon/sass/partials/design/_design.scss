@@ -82,6 +82,7 @@ html{
     float: left;
     a{
       padding: 5px 10px;
+      display: block;
       &:hover, &.active{
         color: #fff;
       }
