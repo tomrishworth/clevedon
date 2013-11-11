@@ -103,7 +103,8 @@
       display: block !important;
     }
     p{
-      font-size: 1.3em !important;
+      //font-size: 1.3em !important;
+      @include adjust-font-size-to(26px);
     }
   }
   

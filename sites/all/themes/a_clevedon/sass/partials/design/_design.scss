@@ -1114,10 +1114,17 @@ fieldset{
 }
 
 .fieldset-wrapper{
-  margin-top: 33px;
-  padding-top: 10px;
+  //margin-top: 33px;
+  padding-top: 30px;
   //border-top: 1px dotted #ccc;
   //background: url("../images/line-light-grey.png") repeat-x left top; 
+}
+
+.description{
+  @include adjust-font-size-to (10px);
+  color: #999;
+  font-family: $sans-serif;
+  padding-top: 5px;
 }
 
 legend{
