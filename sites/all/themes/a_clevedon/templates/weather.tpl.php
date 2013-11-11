@@ -57,7 +57,7 @@
   <?php endif ?>
   <?php if (isset($weather->reported_on)): ?>
     <small class="weather-updated">
-      <?php print t('Updated:'); ?>
+      <?php print t('Updated'); ?><br />
       <?php print $weather->reported_on; ?>
     </small>
   <?php endif ?>
