@@ -103,8 +103,8 @@
       display: block !important;
     }
     p{
-      //font-size: 1.3em !important;
-      @include adjust-font-size-to(26px);
+      font-size: 22px !important;
+      line-height: 140% !important;
     }
   }
   
