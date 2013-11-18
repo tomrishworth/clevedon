@@ -52,19 +52,6 @@ html{
 }
 
 // Main Menu
-/*
-.menu-button {
-  clear: both;
-	padding: 1em;
-	background: #000;
-	color: #fff;
-	background-image: url('../images/arrow-down.png');
-	background-repeat: no-repeat;
-	background-position: 93% 18px;
-	cursor: pointer;
-	@include border-radius (5px);
-}
-*/
 
 #block-menu-block-3{
   background: #000;
@@ -289,6 +276,9 @@ html{
 }
 
 .pane-mobile-slider{
+  img{
+    @include img-frame;
+  }
   .views-field-title{
     font-family: $script-font;
     text-align: center;
@@ -1293,12 +1283,17 @@ legend span{
     .panel-pane{
       border: 1px solid #ccc;
       background: #f0f0f0;
-      padding: 20px 20px 50px 20px;
+      padding: 20px;
       margin-bottom: 20px;
       border-radius: 10px;
       position: relative;
       .pane-title{
         margin: 0 0 10px 0;
+      }
+    }
+    .region-two-66-33-first{
+      .panel-pane{
+      padding: 20px 20px 50px 20px;
       }
     }
 }
