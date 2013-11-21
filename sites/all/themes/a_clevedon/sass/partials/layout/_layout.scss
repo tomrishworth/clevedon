@@ -71,11 +71,11 @@
 
   // Header
   #header{
-    #name-and-slogan{
-      @include span-columns (4, 24);
+    #logo{
+      @include span-columns (6, 24);
     }
     .header-region-wrapper{
-      @include span-columns (20 omega, 24);
+      @include span-columns (18 omega, 24);
     }
     .region-header{
       margin-left: 20px;
