@@ -43,6 +43,7 @@
 <html<?php print $html_attributes; ?>>
   <head>
     <?php print $head; ?>
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
     <?php print $scripts; ?>

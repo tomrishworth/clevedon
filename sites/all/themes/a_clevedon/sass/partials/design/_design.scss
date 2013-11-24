@@ -91,7 +91,7 @@ html{
     text-align: right;
     margin-right: 10px;
     font-family: $sans-serif;
-    @include adjust-font-size-to (11px);
+    @include adjust-font-size-to (13px);
   }
   li{
     display: inline;
@@ -99,6 +99,9 @@ html{
     margin-right: 10px;
     a{
       color: $med-grey;
+      &:hover{
+        color: #fff;
+      }
     }
   }
 }
