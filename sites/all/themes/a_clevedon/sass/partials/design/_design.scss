@@ -872,6 +872,16 @@ html{
   }
 }
 
+// Hide address for certain listings (TEMP FIX)
+
+.view-a-z-business-lisitings{
+  .nid-655{
+    .views-field-field-business-address-line1{
+      display: none;
+    }
+  }
+}
+
 // Things to do
 
 .page-events{

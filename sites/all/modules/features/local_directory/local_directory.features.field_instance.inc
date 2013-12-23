@@ -15,7 +15,7 @@ function local_directory_field_default_field_instances() {
     'bundle' => 'business_lisiting',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This field is used to display the map. <br />Leave empty to not display a map. <br />It needs to be a physical address. <br />Add \'New Zealand\' to the end of the address. <br /><strong>e.g. "34 Quinns Rd, Clevedon, New Zealand". </strong>',
+    'description' => 'This field is used to display the location of your business on a google map<br />Leave empty to not display a map. <br />It needs to be a physical address. <br />Please add \'New Zealand\' to the end of the address. <br /><strong>e.g. "123 Main Rd, Clevedon, New Zealand". </strong>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -77,10 +77,9 @@ function local_directory_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'print' => array(
         'label' => 'hidden',
@@ -111,7 +110,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 16,
     ),
   );
 
@@ -130,10 +129,9 @@ function local_directory_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'print' => array(
         'label' => 'hidden',
@@ -164,7 +162,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 17,
     ),
   );
 
@@ -211,7 +209,7 @@ function local_directory_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 2,
     ),
   );
@@ -286,8 +284,8 @@ function local_directory_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'email',
         'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 9,
+        'type' => 'email_spamspan',
+        'weight' => 6,
       ),
       'print' => array(
         'label' => 'inline',
@@ -317,7 +315,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 7,
+      'weight' => 21,
     ),
   );
 
@@ -364,7 +362,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 25,
     ),
   );
 
@@ -386,7 +384,7 @@ function local_directory_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 5,
       ),
       'print' => array(
         'label' => 'inline',
@@ -417,7 +415,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 23,
     ),
   );
 
@@ -439,7 +437,7 @@ function local_directory_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 8,
       ),
       'print' => array(
         'label' => 'inline',
@@ -470,7 +468,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 24,
     ),
   );
 
@@ -558,7 +556,7 @@ function local_directory_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 4,
       ),
       'print' => array(
         'label' => 'inline',
@@ -589,7 +587,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 20,
     ),
   );
 
@@ -611,7 +609,7 @@ function local_directory_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 3,
       ),
       'print' => array(
         'label' => 'inline',
@@ -642,7 +640,7 @@ function local_directory_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 19,
     ),
   );
 
@@ -662,8 +660,9 @@ function local_directory_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'flexslider_fields',
         'settings' => array(
-          'flexslider_optionset' => 'listing_slides',
-          'flexslider_reference_img_src' => NULL,
+          'caption' => 0,
+          'image_style' => 'listing_slide_large',
+          'optionset' => 'default',
         ),
         'type' => 'flexslider',
         'weight' => 0,
@@ -732,7 +731,7 @@ function local_directory_field_default_field_instances() {
           'strip_www' => 1,
         ),
         'type' => 'link_domain',
-        'weight' => 10,
+        'weight' => 7,
       ),
       'print' => array(
         'label' => 'inline',
@@ -776,7 +775,57 @@ function local_directory_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 8,
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'node-business_lisiting-field_hide_address'
+  $field_instances['node-business_lisiting-field_hide_address'] = array(
+    'bundle' => 'business_lisiting',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box if you do not want your address displayed on your listing.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_hide_address',
+    'label' => 'Hide Address',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 18,
     ),
   );
 
@@ -844,7 +893,7 @@ function local_directory_field_default_field_instances() {
           'geofield_map_baselayers_physical' => 0,
           'geofield_map_baselayers_satellite' => 1,
           'geofield_map_controltype' => 'default',
-          'geofield_map_draggable' => 0,
+          'geofield_map_draggable' => 1,
           'geofield_map_height' => '300px',
           'geofield_map_maptype' => 'map',
           'geofield_map_mtc' => 'standard',
@@ -986,10 +1035,12 @@ function local_directory_field_default_field_instances() {
   t('Address for Map');
   t('Business Category');
   t('Business Hours');
+  t('Check this box if you do not want your address displayed on your listing.');
   t('Description');
   t('Email Address');
   t('Facebook page');
   t('Fax');
+  t('Hide Address');
   t('If selected, this listing will also be displayed in the regular events section');
   t('Listing type');
   t('Logo');
@@ -997,7 +1048,7 @@ function local_directory_field_default_field_instances() {
   t('Mobile Number');
   t('Phone');
   t('Slideshow Images');
-  t('This field is used to display the map. <br />Leave empty to not display a map. <br />It needs to be a physical address. <br />Add \'New Zealand\' to the end of the address. <br /><strong>e.g. "34 Quinns Rd, Clevedon, New Zealand". </strong>');
+  t('This field is used to display the location of your business on a google map<br />Leave empty to not display a map. <br />It needs to be a physical address. <br />Please add \'New Zealand\' to the end of the address. <br /><strong>e.g. "123 Main Rd, Clevedon, New Zealand". </strong>');
   t('This listing is a regular event');
   t('Website');
   t('e.g. \'www.facebook.com/clevedon\'');

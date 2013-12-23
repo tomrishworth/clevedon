@@ -57,6 +57,7 @@ function local_directory_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'nid-[nid]';
   $handler->display->display_options['style_options']['wrapper_class'] = 'directory-list';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
@@ -106,14 +107,13 @@ function local_directory_views_default_views() {
   $handler->display->display_options['fields']['view_node']['label'] = '';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'More info »';
-  /* Field: Content: Facebook page */
-  $handler->display->display_options['fields']['field_business_facebook_page']['id'] = 'field_business_facebook_page';
-  $handler->display->display_options['fields']['field_business_facebook_page']['table'] = 'field_data_field_business_facebook_page';
-  $handler->display->display_options['fields']['field_business_facebook_page']['field'] = 'field_business_facebook_page';
-  $handler->display->display_options['fields']['field_business_facebook_page']['label'] = '';
-  $handler->display->display_options['fields']['field_business_facebook_page']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_business_facebook_page']['alter']['text'] = '<div class="fb-like" data-href="http://[field_business_facebook_page]" data-send="false" data-width="260" data-show-faces="false" data-font="arial"></div>';
-  $handler->display->display_options['fields']['field_business_facebook_page']['element_label_colon'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
