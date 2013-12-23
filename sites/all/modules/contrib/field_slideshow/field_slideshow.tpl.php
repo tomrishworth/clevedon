@@ -15,13 +15,19 @@ if (!isset($pager_position)) {
   $pager_position = "after";
 }
 ?>
-<div id="field-slideshow-<?php print $id; ?>-wrapper" class="field-slideshow-wrapper">
+<div id="field-slideshow-<?php print $slideshow_id; ?>-wrapper" class="field-slideshow-wrapper">
 
   <?php if ($controls_position == "before")  print(render($controls)); ?>
 
   <?php if ($pager_position == "before")  print(render($pager)); ?>
 
-  <div class="<?php print $classes; ?>" style="width:<?php print $slides_max_width; ?>px; height:<?php print $slides_max_height; ?>px">
+  <?php if (isset($breakpoints) && isset($breakpoints['mapping']) && !empty($breakpoints['mapping'])) {
+    $style = 'height:' . $slides_max_height . 'px';
+  } else {
+    $style = 'width:' . $slides_max_width . 'px; height:' . $slides_max_height . 'px';
+  } ?>
+
+  <div class="<?php print $classes; ?>" style="<?php print $style; ?>">
     <?php foreach ($items as $num => $item) : ?>
       <div class="<?php print $item['classes']; ?>"<?php if ($num) : ?> style="display:none;"<?php endif; ?>>
         <?php print $item['image']; ?>

@@ -4,7 +4,7 @@
  * @file
  * Tests parsing of raw METAR data.
  *
- * Copyright © 2006-2012 Tobias Quathamer <t.quathamer@gmx.net>
+ * Copyright © 2006-2013 Tobias Quathamer <t.quathamer@gmx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,11 +21,15 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+/**
+ * Test class for the parser.
+ */
 class WeatherParserTestCase extends DrupalWebTestCase {
+
   /**
    * General information.
    */
-  function getInfo() {
+  public static function getInfo() {
     return array(
       'name' => 'Parser',
       'description' => 'Tests parsing of raw METAR data.',
@@ -36,7 +40,7 @@ class WeatherParserTestCase extends DrupalWebTestCase {
   /**
    * Set up testing environment.
    */
-  function setUp() {
+  public function setUp() {
     parent::setUp('weather');
     module_load_include('inc', 'weather', 'weather_parser');
   }
@@ -44,7 +48,7 @@ class WeatherParserTestCase extends DrupalWebTestCase {
   /**
    * Test the parser with normal data.
    */
-  function testNormalMETAR() {
+  public function testNormalMETAR() {
     $testdata = array(
       "EDDH 071250Z 27005KT 9999 -SHRA BKN025 07/04 Q1021 NOSIG" =>
       array(
@@ -181,7 +185,7 @@ class WeatherParserTestCase extends DrupalWebTestCase {
         'image' => 'night-scattered',
         'raw' => 'CYYZ 290100Z 29008KT 12SM SCT220 M36/M41 A3023 RMK CI2 IC LAST OBS/NEXT 011300 UTC SLP245',
       ),
-      "EPGD 300230Z 27013KT 9999 -SHSN BKN013 M02/M04 Q0984 R11/490236" =>
+      "EPGD 300030Z 27013KT 9999 -SHSN BKN013 M02/M04 Q0984 R11/490236" =>
       array(
         'icao' => 'EPGD',
         'sky_condition' => 'broken',
@@ -194,7 +198,22 @@ class WeatherParserTestCase extends DrupalWebTestCase {
         'pressure' => 984,
         'visibility' => 9999,
         'image' => 'night-broken-light-snow',
-        'raw' => 'EPGD 300230Z 27013KT 9999 -SHSN BKN013 M02/M04 Q0984 R11/490236',
+        'raw' => 'EPGD 300030Z 27013KT 9999 -SHSN BKN013 M02/M04 Q0984 R11/490236',
+      ),
+      "KBLI 210920Z AUTO 00000KT 1/4SM R16/1800V3500FT FZFG VV001 M03/M04 A3022 RMK AO2" =>
+      array(
+        'icao' => 'KBLI',
+        'sky_condition' => 'overcast',
+        'phenomena' => 'freezing fog',
+        'temperature' => -3,
+        'dewpoint' => -4,
+        'wind_direction' => '0',
+        'wind_speed' => 0,
+        'wind_gusts' => NULL,
+        'pressure' => 1023,
+        'visibility' => 402,
+        'image' => 'night-overcast-fog',
+        'raw' => 'KBLI 210920Z AUTO 00000KT 1/4SM R16/1800V3500FT FZFG VV001 M03/M04 A3022 RMK AO2',
       ),
     );
     foreach ($testdata as $metar_raw => $expected) {

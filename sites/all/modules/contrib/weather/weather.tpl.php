@@ -12,10 +12,10 @@
   <ul>
     <li><?php print $weather->condition; ?></li>
     <?php if (isset($weather->temperature)): ?>
-      <?php if (isset($weather->windchill)): ?>
+      <?php if (isset($weather->apparent_temperature)): ?>
         <li><?php print t("Temperature: !temperature1, feels like !temperature2", array(
           '!temperature1' => $weather->temperature,
-          '!temperature2' => $weather->windchill
+          '!temperature2' => $weather->apparent_temperature
         )); ?></li>
       <?php else: ?>
         <li><?php print t("Temperature: !temperature",

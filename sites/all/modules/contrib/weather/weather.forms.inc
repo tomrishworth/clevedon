@@ -4,7 +4,7 @@
  * @file
  * Provide forms for configuration of weather displays.
  *
- * Copyright © 2006-2012 Tobias Quathamer <t.quathamer@gmx.net>
+ * Copyright © 2006-2013 Tobias Quathamer <t.quathamer@gmx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -135,7 +135,7 @@ function weather_user_main_page($uid) {
  * Create a settings form for a weather display.
  *
  * @param string $display_type
- *   Type of the display (e.g. system-wide, user, location, ...).
+ *   Type of the display (for example, system-wide, user, location, ...).
  * @param string $display_number
  *   Number of the display or NULL.
  *
@@ -194,7 +194,7 @@ function weather_display_settings_form($form, &$form_state, $display_type, $disp
   );
   $form['units']['distance'] = array(
     '#type' => 'select',
-    '#title' => t('Distance (e.g. Visibility)'),
+    '#title' => t('Distance (for example, Visibility)'),
     '#default_value' => $settings->units['distance'],
     '#options' => array('kilometers' => t('Kilometers'), 'miles' => t('UK miles')),
   );
@@ -222,11 +222,11 @@ function weather_display_settings_form($form, &$form_state, $display_type, $disp
       'metar' => t('Original METAR report'),
     ),
   );
-  $form['settings']['show_windchill'] = array(
+  $form['settings']['show_apparent_temperature'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Show windchill temperature'),
-    '#default_value' => $settings->settings['show_windchill'],
-    '#description' => t('Calculates the temperature resulting from windchill. This is how the temperature <q>feels like</q>. Windchill temperature is only defined for temperatures below 10 °C (50 °F) and wind speeds above 5 km/h (3 mph).'),
+    '#title' => t('Show apparent temperature'),
+    '#default_value' => $settings->settings['show_apparent_temperature'],
+    '#description' => t('Displays the apparent temperature. This is how the temperature <q>feels like</q>. For cold and windy conditions, the windchill is calculated. For hot and humid conditions, the heat index is calculated. Note that windchill temperature is only defined for temperatures below 10 °C (50 °F) and wind speeds above 5 km/h (3 mph). The heat index is only defined for temperatures above 26.7 °C (80 °F) and a relative humidity above 40%.'),
   );
   $form['settings']['show_abbreviated_directions'] = array(
     '#type' => 'checkbox',
@@ -238,7 +238,7 @@ function weather_display_settings_form($form, &$form_state, $display_type, $disp
     '#type' => 'checkbox',
     '#title' => t('Show degrees of wind directions'),
     '#default_value' => $settings->settings['show_directions_degree'],
-    '#description' => t('Displays the degrees of wind directions, e.g. North (20°).'),
+    '#description' => t('Displays the degrees of wind directions, for example, North (20°).'),
   );
   $form['settings']['show_compact_block'] = array(
     '#type' => 'checkbox',

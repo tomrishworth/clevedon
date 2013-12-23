@@ -4,7 +4,7 @@
  * @file
  * Install, update and uninstall functions for the weather module.
  *
- * Copyright © 2006-2012 Tobias Quathamer <t.quathamer@gmx.net>
+ * Copyright © 2006-2013 Tobias Quathamer <t.quathamer@gmx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -182,7 +182,7 @@ function weather_schema() {
     'fields' => array(
       'id' => array(
         'description' => 'Location id.',
-        'type' => 'serial'
+        'type' => 'serial', 'not null' => TRUE
       ),
       'display_type' => array(
         'description' => 'Type of display (system-wide, user, location, default, ...).',
@@ -215,7 +215,7 @@ function weather_schema() {
   );
 
   $schema['weather_display'] = array(
-    'description' => 'Configuration of a display (e.g. a block).',
+    'description' => 'Configuration of a display (for example, a block).',
     'fields' => array(
       'type' => array(
         'description' => 'Type of display (system-wide, user, location, default, ...).',
@@ -437,7 +437,7 @@ function weather_update_7100(&$sandbox) {
 
   // Create new table for displays.
   $schema = array(
-    'description' => 'Configuration of a display (e.g. a block).',
+    'description' => 'Configuration of a display (for example, a block).',
     'fields' => array(
       'type' => array(
         'description' => 'Type of display (system-wide, user, location, default, ...).',
@@ -596,4 +596,113 @@ function _weather_convert_settings($settings, $units) {
 function weather_update_7101(&$sandbox) {
   weather_data_installation();
   variable_del('weather_fetch');
+}
+
+/**
+ * Implement hook_update_N().
+ *
+ * Insert three new locations into ICAO table.
+ * (Northern Mariana Islands)
+ */
+function weather_update_7102(&$sandbox) {
+  weather_data_installation();
+}
+
+/**
+ * Implement hook_update_N().
+ *
+ * Convert settings to support heat index temperatures.
+ */
+function weather_update_7103(&$sandbox) {
+  $result = db_query('SELECT * FROM {weather_display}');
+  foreach ($result as $row) {
+    $new['type'] = $row->type;
+    $new['number'] = $row->number;
+    $new['units'] = $row->units;
+    $old = unserialize($row->settings);
+    $settings = array(
+      'data' => $old['data'],
+      'show_apparent_temperature' => $old['show_windchill'],
+      'show_abbreviated_directions' => $old['show_abbreviated_directions'],
+      'show_directions_degree' => $old['show_directions_degree'],
+      'show_compact_block' => $old['show_compact_block'],
+    );
+    $new['settings'] = serialize($settings);
+    db_delete('weather_display')
+      ->condition('type', $row->type)
+      ->condition('number', $row->number)
+      ->execute();
+    db_insert('weather_display')->fields($new)->execute();
+  }
+}
+
+/**
+ * Implement hook_update_N().
+ *
+ * Update information for Mariscal Sucre International Airport, Ecuador.
+ * Remove information for stations which no longer provide weather data.
+ */
+function weather_update_7104(&$sandbox) {
+  weather_data_installation();
+  db_update('weather_location')
+    ->fields(array('icao' => 'SEQM'))
+    ->condition('icao', 'SEQU')
+    ->execute();
+  $removed_icaos = array(
+    'CWDL', 'CWGZ', 'CYEL', 'CYLU', 'CYSD', 'CYSR', 'CYTJ', 'CZEM',
+    'DAOL', 'DFOO', 'DGSI', 'DNAA', 'DNCA', 'DNEN', 'DNIL', 'DNKA',
+    'DNMA', 'DNPO', 'DNSO', 'DRZA', 'DRZR', 'EDBM', 'EDDI', 'EDQD',
+    'EGDG', 'EGDL', 'EGHD', 'EGTG', 'EGXJ', 'EGYW', 'EHSB', 'EHTW',
+    'EHVB', 'EKTS', 'ENFR', 'ENLI', 'EQBC', 'ESNY', 'ESPC', 'ESSF',
+    'ETHM', 'FAAB', 'FADN', 'FAGM', 'FAJS', 'FAKD', 'FANS', 'FAPS',
+    'FARG', 'FASR', 'FAWK', 'FBGZ', 'FBJW', 'FBLT', 'FBSN', 'FBSW',
+    'FBTE', 'FBTS', 'FEFG', 'FEFT', 'FKKN', 'FKKR', 'FLLS', 'FLMF',
+    'FLND', 'FMST', 'FNBG', 'FNHU', 'FOGR', 'FOOB', 'FOOK', 'FOON',
+    'FOOR', 'FOOT', 'FQIN', 'FTTA', 'FTTD', 'FZOA', 'FZQA', 'HBBA',
+    'HCMH', 'HCMI', 'HCMV', 'HUAR', 'HUKS', 'HUMA', 'HUTO', 'K04V',
+    'K2F8', 'K2GL', 'K3A1', 'K3A6', 'K3B2', 'K3B6', 'K3DU', 'K40B',
+    'K45J', 'K47A', 'K48I', 'K4BL', 'K4BM', 'K4CR', 'K4HV', 'K4MY',
+    'K4SL', 'K5J0', 'K5T6', 'K6V3', 'K76S', 'K77M', 'K78N', 'K9BB',
+    'KALM', 'KAQR', 'KARL', 'KAUD', 'KAWG', 'KAWH', 'KAXA', 'KB23',
+    'KBID', 'KBKX', 'KBNW', 'KBRX', 'KCCO', 'KCMS', 'KDNK', 'KDNS',
+    'KE33', 'KECU', 'KEKA', 'KEOK', 'KGBN', 'KGSM', 'KH08', 'KHMS',
+    'KILL', 'KMUT', 'KNHZ', 'KNXX', 'KO87', 'KOGS', 'KOQU', 'KPFN',
+    'KPLB', 'KPNT', 'KPUM', 'KQUK', 'KRPE', 'KRZZ', 'KS47', 'KS58',
+    'KSFD', 'KSIB', 'KSMN', 'KSMP', 'KSRE', 'KSRN', 'KTDO', 'KU24',
+    'KU28', 'KU59', 'KU78', 'KVDW', 'KXCN', 'KYUM', 'LFLD', 'LFLV',
+    'LFQI', 'LFSC', 'LFSF', 'LFSR', 'LICP', 'LIPT', 'LKHO', 'LKLB',
+    'LLOV', 'LOAG', 'LOGG', 'LOLF', 'LOXA', 'LOXT', 'LRCS', 'LTAB',
+    'LTAD', 'LTAE', 'LTBG', 'LTBI', 'LTBL', 'LTBQ', 'LZKC', 'LZLU',
+    'LZNI', 'LZPE', 'MDHE', 'MGTK', 'MUCA', 'MYEG', 'NGTA', 'NLWW',
+    'NZOH', 'OERY', 'ORBB', 'ORBS', 'OSAP', 'OSDZ', 'PADT', 'PAER',
+    'PAFE', 'PAGB', 'PAHV', 'PAHZ', 'PAJC', 'PAJV', 'PALK', 'PALR',
+    'PALV', 'PAMD', 'PAPC', 'PAPM', 'PAPR', 'PARD', 'PARL', 'PASP',
+    'PATC', 'PATW', 'PAUO', 'PAWN', 'PAWR', 'PAXK', 'PHHN', 'PHIK',
+    'RJAK', 'RJBH', 'RJCJ', 'RJDM', 'RJFA', 'RJFC', 'RJFE', 'RJFN',
+    'RJFY', 'RJFZ', 'RJKB', 'RJNF', 'RJNH', 'RJOE', 'RJOP', 'RJOS',
+    'RJOZ', 'RJSH', 'RJSM', 'RJSO', 'RJST', 'RJSU', 'RJTA', 'RJTE',
+    'RJTH', 'RJTJ', 'RJTL', 'RKJY', 'ROKJ', 'SAAC', 'SAST', 'SATR',
+    'SAVT', 'SCCH', 'SLAS', 'SLJV', 'SUAG', 'SUME', 'UAFM', 'UELL',
+    'UERP', 'UERR', 'UEST', 'UGGG', 'ULAA', 'ULMM', 'ULOL', 'ULWW',
+    'UNWW', 'UUEM', 'UUOO', 'UWPP', 'VAGO', 'VTPM', 'VTSR', 'YAYE',
+    'FQNP', 'HUSO', 'KDPG', 'KICL', 'KMYF', 'KRSV',
+  );
+  foreach ($removed_icaos as $icao) {
+    db_delete('weather_location')
+      ->condition('icao', $icao)
+      ->execute();
+    db_delete('weather_metar')
+      ->condition('icao', $icao)
+      ->execute();
+  }
+}
+
+/**
+ * Implement hook_update_N().
+ *
+ * Insert one new location into ICAO table.
+ * (Maniwaki, Canada)
+ */
+function weather_update_7105(&$sandbox) {
+  weather_data_installation();
 }

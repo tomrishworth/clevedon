@@ -4,7 +4,7 @@
  * @file
  * Tests permission and access settings for different users.
  *
- * Copyright © 2006-2012 Tobias Quathamer <t.quathamer@gmx.net>
+ * Copyright © 2006-2013 Tobias Quathamer <t.quathamer@gmx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,15 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+/**
+ * Test class for permissions.
+ */
 class WeatherPermissionTestCase extends DrupalWebTestCase {
-  function getInfo() {
+
+  /**
+   * General information.
+   */
+  public static function getInfo() {
     return array(
       'name' => 'Permission',
       'description' => 'Tests permission and access settings for different users.',
@@ -30,23 +37,19 @@ class WeatherPermissionTestCase extends DrupalWebTestCase {
     );
   }
 
-
-
   /**
    * Set up testing environment
    */
-  function setUp() {
+  public function setUp() {
     parent::setUp('weather', 'block');
   }
-
-
 
   /**
    * Permissions of weather block
    *
    * This test requires that at least one system wide block is enabled.
    */
-  function testPermissions() {
+  public function testPermissions() {
     // This user is allowed to view the system block
     $normal_user = $this->drupalCreateUser(array(
       'access content'

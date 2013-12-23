@@ -55,9 +55,9 @@ Drupal.webform.datepicker = function(context) {
       maxDate: endDate,
       onSelect: function(dateText, inst) {
         var date = dateText.split('-');
-        $webformDatepicker.find('select.year, input.year').val(+date[0]);
-        $webformDatepicker.find('select.month').val(+date[1]);
-        $webformDatepicker.find('select.day').val(+date[2]);
+        $webformDatepicker.find('select.year, input.year').val(+date[0]).trigger('change');
+        $webformDatepicker.find('select.month').val(+date[1]).trigger('change');
+        $webformDatepicker.find('select.day').val(+date[2]).trigger('change');
       },
       beforeShow: function(input, inst) {
         // Get the select list values.
@@ -90,17 +90,18 @@ Drupal.webform.datepicker = function(context) {
 
 Drupal.webform.conditional = function(context) {
   // Add the bindings to each webform on the page.
-  $.each(Drupal.settings.webform.conditionals, function(formId, settings) {
-    var $form = $('#' + formId + ':not(.webform-conditional-processed)');
-    if ($form.length) {
-      $form.addClass('webform-conditional-processed');
-      $form.bind('change', { 'settings': settings }, Drupal.webform.conditionalCheck);
+  $.each(Drupal.settings.webform.conditionals, function(formKey, settings) {
+    var $form = $('.' + formKey + ':not(.webform-conditional-processed)');
+    $form.each(function(index, currentForm) {
+      var $currentForm = $(currentForm);
+      $currentForm.addClass('webform-conditional-processed');
+      $currentForm.bind('change', { 'settings': settings }, Drupal.webform.conditionalCheck);
 
       // Trigger all the elements that cause conditionals on this form.
-      $.each(Drupal.settings.webform.conditionals[formId]['sourceMap'], function(elementId) {
-        $('#' + elementId).find('input,select,textarea').filter(':first').trigger('change');
+      $.each(Drupal.settings.webform.conditionals[formKey]['sourceMap'], function(elementKey) {
+        $currentForm.find('.' + elementKey).find('input,select,textarea').filter(':first').trigger('change');
       });
-    }
+    })
   });
 };
 
@@ -110,21 +111,23 @@ Drupal.webform.conditional = function(context) {
  * This event is bound to the entire form, not individual fields.
  */
 Drupal.webform.conditionalCheck = function(e) {
-  var $triggerElement = $(e.target).parents('.webform-component:first');
-  var triggerElementId = $triggerElement.attr('id');
+  var $triggerElement = $(e.target).closest('.webform-component');
+  var $form = $triggerElement.closest('form');
+  var triggerElementKey = $triggerElement.attr('class').match(/webform-component--[^ ]+/)[0];
   var settings = e.data.settings;
 
-  if (settings.sourceMap[triggerElementId]) {
-    $.each(settings.sourceMap[triggerElementId], function(n, rgid) {
+
+  if (settings.sourceMap[triggerElementKey]) {
+    $.each(settings.sourceMap[triggerElementKey], function(n, rgid) {
       var ruleGroup = settings.ruleGroups[rgid];
 
       // Perform the comparison callback and build the results for this group.
       var conditionalResult = true;
       var conditionalResults = [];
       $.each(ruleGroup['rules'], function(m, rule) {
-        var elementId = rule['source'];
-        var element = document.getElementById(elementId);
-        var existingValue = settings.values[elementId] ? settings.values[elementId] : null;
+        var elementKey = rule['source'];
+        var element = $form.find('.' + elementKey)[0];
+        var existingValue = settings.values[elementKey] ? settings.values[elementKey] : null;
         conditionalResults.push(window['Drupal']['webform'][rule.callback](element, existingValue, rule['value'] ));
       });
 
@@ -153,10 +156,10 @@ Drupal.webform.conditionalCheck = function(e) {
       }
 
       if (showComponent) {
-        $('#' + ruleGroup['target']).find('input.webform-conditional-disabled').removeAttr('disabled').removeClass('webform-conditional-disabled').end().show();
+        $form.find('.' + ruleGroup['target']).find('.webform-conditional-disabled').removeAttr('disabled').removeClass('webform-conditional-disabled').end().show();
       }
       else {
-        $('#' + ruleGroup['target']).find('input:not(:disabled)').attr('disabled', true).addClass('webform-conditional-disabled').end().hide();
+        $form.find('.' + ruleGroup['target']).find(':input').attr('disabled', true).addClass('webform-conditional-disabled').end().hide();
       }
 
     });
@@ -323,23 +326,23 @@ Drupal.webform.stringValue = function(element, existingValue) {
   var value = [];
 
   if (element) {
-    // Simple textfields.
-    $(element).find('input:not([type=checkbox],[type=radio]),textarea').each(function() {
+    // Checkboxes and radios.
+    $(element).find('input[type=checkbox]:checked,input[type=radio]:checked').each(function() {
       value.push(this.value);
     });
-
-    // Checkboxes and radios.
-    if (!value.length) {
-      $(element).find('input:checked').each(function() {
-        value.push(this.value);
-      });
-    }
     // Select lists.
     if (!value.length) {
       var selectValue = $(element).find('select').val();
       if (selectValue) {
         value.push(selectValue);
       }
+    }
+    // Simple text fields. This check is done last so that the select list in
+    // select-or-other fields comes before the "other" text field.
+    if (!value.length) {
+      $(element).find('input:not([type=checkbox],[type=radio]),textarea').each(function() {
+        value.push(this.value);
+      });
     }
   }
   else if (existingValue) {

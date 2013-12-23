@@ -4,7 +4,7 @@
  * @file
  * Prepare themed weather output.
  *
- * Copyright © 2006-2012 Tobias Quathamer <t.quathamer@gmx.net>
+ * Copyright © 2006-2013 Tobias Quathamer <t.quathamer@gmx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,8 +55,8 @@ function theme_weather_theming($variables) {
     $units = $display->units;
     if (!empty($show['temperature']) and isset($metar->temperature)) {
       $weather->temperature = weather_format_temperature($metar->temperature, $units['temperature']);
-      if (!empty($display->settings['show_windchill']) and isset($metar->wind_speed)) {
-        $weather->windchill = weather_format_windchill($metar->temperature, $metar->wind_speed, $units['temperature']);
+      if (!empty($display->settings['show_apparent_temperature'])) {
+        $weather->apparent_temperature = weather_format_apparent_temperature($metar, $units['temperature']);
       }
     }
     if (!empty($show['wind']) and isset($metar->wind_direction)) {
@@ -76,7 +76,7 @@ function theme_weather_theming($variables) {
     if (!empty($show['visibility']) and isset($metar->visibility)) {
       $weather->visibility = weather_format_visibility($metar->visibility, $units['distance']);
     }
-    if (!empty($show['suninfo'])) {
+    if (!empty($show['suninfo']) and isset($metar->sunrise_on) and isset($metar->sunset_on)) {
       $suninfo = weather_format_suninfo($metar->sunrise_on, $metar->sunset_on);
       $weather->sunrise = $suninfo['sunrise'];
       $weather->sunset = $suninfo['sunset'];
@@ -133,6 +133,7 @@ function weather_format_sky_condition($metar) {
         case 'shallow fog': $result[] = t('shallow fog'); break;
         case 'partial fog': $result[] = t('partial fog'); break;
         case 'patches of fog': $result[] = t('patches of fog'); break;
+        case 'freezing fog': $result[] = t('freezing fog'); break;
         case 'fog': $result[] = t('fog'); break;
         case 'smoke': $result[] = t('smoke'); break;
         // Precipitation, rain.
@@ -214,17 +215,22 @@ function weather_format_temperature($temperature, $unit) {
 }
 
 /**
- * Calculates windchill.
+ * Calculates apparent temperature.
+ *
+ * This might be windchill (if cold and windy) or
+ * heat index (if hot and humid).
  *
  * Windchill temperature is only defined for temperatures at or below
  * 10 °C (50 °F) and wind speeds above 4.8 km/h (3 mph). Bright sunshine
  * may increase the wind chill temperature.
  * @link http://en.wikipedia.org/wiki/Wind_chill
  *
- * @param int $temperature
- *   Temperature in degree celsius.
- * @param int $wind_speed
- *   Wind speed in km/h.
+ * The heat index is only defined for temperatures at or above
+ * 26.7 °C (80 °F) and a relative humidity above 40%.
+ * @link http://en.wikipedia.org/wiki/Heat_index
+ *
+ * @param int $metar
+ *   Structure with necessary information.
  * @param string $unit
  *   Unit to be returned (celsius, fahrenheit, ...).
  *
@@ -232,17 +238,43 @@ function weather_format_temperature($temperature, $unit) {
  *   Formatted representation in the desired unit. If the windchill is not
  *   defined for the current conditions, returns NULL.
  */
-function weather_format_windchill($temperature, $wind_speed, $unit) {
-  if (($temperature <= 10) and ($wind_speed >= 4.8)) {
-    // Calculate windchill (in degree Celsius).
-    $windchill = round(13.12 + 0.6215 * $temperature -
-      11.37 * pow($wind_speed, 0.16) +
-      0.3965 * $temperature * pow($wind_speed, 0.16), 1);
-    $result = weather_format_temperature($windchill, $unit);
+function weather_format_apparent_temperature($metar, $unit) {
+  // Set up the empty result, if apparent temperature is not defined
+  // for current conditions.
+  $result = NULL;
+  // First, check conditions for windchill temperature.
+  if ($metar->temperature <= 10) {
+    if (isset($metar->wind_speed) and ($metar->wind_speed >= 4.8)) {
+      // Calculate windchill (in degree Celsius).
+      $windchill = round(13.12 + 0.6215 * $metar->temperature -
+        11.37 * pow($metar->wind_speed, 0.16) +
+        0.3965 * $metar->temperature * pow($metar->wind_speed, 0.16), 1);
+      $result = weather_format_temperature($windchill, $unit);
+    }
   }
-  else {
-    // Windchill is not defined for current conditions.
-    $result = NULL;
+  // Second, check conditions for heat index.
+  if ($metar->temperature >= 26.7) {
+    if (isset($metar->dewpoint)) {
+      // Calculate relative humidity
+      $e = 6.11 * pow(10, (7.5 * $metar->dewpoint / (237.7 + $metar->dewpoint)));
+      $es = 6.11 * pow(10, (7.5 * $metar->temperature / (237.7 + $metar->temperature)));
+      $h = max(0, min(100, round(100 * ($e / $es), 0)));
+      if ($h >= 40) {
+        // Calculate heat index (in degree Celsius).
+        $c1 = -8.784695;
+        $c2 = 1.61139411;
+        $c3 = 2.338549;
+        $c4 = -0.14611605;
+        $c5 = -1.2308094E-2;
+        $c6 = -1.6424828E-2;
+        $c7 = 2.211732E-3;
+        $c8 = 7.2546E-4;
+        $c9 = -3.582E-6;
+        $t = $metar->temperature;
+        $heatindex = round($c1 + $c2*$t + $c3*$h + $c4*$t*$h + $c5*$t*$t + $c6*$h*$h + $c7*$t*$t*$h + $c8*$t*$h*$h + $c9*$t*$t*$h*$h, 1);
+        $result = weather_format_temperature($heatindex, $unit);
+      }
+    }
   }
   return $result;
 }
@@ -253,7 +285,7 @@ function weather_format_windchill($temperature, $wind_speed, $unit) {
  * @param int $wind_speed
  *   Wind speed in km/h.
  * @param string $wind_direction
- *   Wind direction ('variable' or compass bearings, e.g. '080')
+ *   Wind direction ('variable' or compass bearings, for example, '080')
  * @param int $wind_gusts
  *   Speed of wind gusts
  * @param array $settings
@@ -285,7 +317,7 @@ function weather_format_wind($wind_speed, $wind_direction, $wind_gusts, $setting
     $result[] = t('Variable');
   }
   elseif (drupal_strlen($wind_direction) > 3) {
-    // The wind is variable with compass bearings, e.g. 090-130
+    // The wind is variable with compass bearings, for example, 090-130
     list($start, $end) = explode('-', $wind_direction);
     $start_text = weather_bearing_to_text($start, $abbreviated);
     $end_text = weather_bearing_to_text($end, $abbreviated);
@@ -360,7 +392,7 @@ function weather_format_wind($wind_speed, $wind_direction, $wind_gusts, $setting
  * Converts a compass bearing to a text direction.
  *
  * This function can be used to get a text representation of a compass
- * bearing (e.g. 0° North, 86° East, ...).
+ * bearing (for example, 0° North, 86° East, ...).
  *
  * @param string $bearing
  *   Compass bearing in degrees.
@@ -452,7 +484,7 @@ function weather_calculate_beaufort($wind_speed) {
  * @param int $pressure
  *   Pressure in hPa.
  * @param string $unit
- *   Unit to be returned (e.g. inHg, mmHg, hPa, kPa).
+ *   Unit to be returned (for example, inHg, mmHg, hPa, kPa).
  *
  * @return string
  *   Formatted representation.
@@ -504,7 +536,7 @@ function weather_format_relative_humidity($temperature, $dewpoint) {
  * @param int $visibility
  *   Visibility in meter.
  * @param string $unit
- *   Unit to be returned (e.g. UK miles, km).
+ *   Unit to be returned (for example, UK miles, km).
  *
  * @return string
  *   Formatted representation.
@@ -567,7 +599,7 @@ function weather_format_suninfo($sunrise, $sunset) {
  * @param object $location
  *   Location object.
  * @param string $unit
- *   Unit to be returned (e.g. UK miles, km).
+ *   Unit to be returned (for example, UK miles, km).
  * @param array $settings
  *   Settings for displaying (abbreviated directions, with compass bearing)
  *

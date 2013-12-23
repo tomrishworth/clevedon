@@ -4,7 +4,7 @@
  * @file
  * Retrieves and parses raw METAR data and stores result in database.
  *
- * Copyright © 2006-2012 Tobias Quathamer <t.quathamer@gmx.net>
+ * Copyright © 2006-2013 Tobias Quathamer <t.quathamer@gmx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -91,11 +91,20 @@ function weather_refresh_data($icao, &$metar) {
       $metar->next_update_on = $last_update + $hours + 120;
     }
   }
-  // Make sure there's no stale data around
-  db_delete('weather_metar')
-    ->condition('icao', $icao)
-    ->execute();
-  drupal_write_record('weather_metar', $metar);
+  // Wrap drupal_write_record() into try/catch block, see #1412352.
+  try {
+    // Make sure there's no stale data around
+    db_delete('weather_metar')
+      ->condition('icao', $icao)
+      ->execute();
+    drupal_write_record('weather_metar', $metar);
+  }
+  catch (Exception $e) {
+    // Nothing to do here. If the writing fails and an exception
+    // is raised, the writing of the data will happen on the next
+    // update.
+    watchdog_exception('weather', $e);
+  }
 }
 
 /**
@@ -143,10 +152,12 @@ function weather_parse_metar($metar_raw_string) {
   // Setup the METAR data object.
   $metar = new stdClass();
   $metar->raw = $metar_raw_string;
+  // Initialize a helper property, see bug #1894646.
+  $metar->visibility_miles = 0;
   // Extract the date and time in UTC.
   $metar->reported_on = _weather_parse_timestamp($metar_raw_string);
   // Some stations insert a space between the cloud conditions
-  // and the altitude, e.g. "FEW 025" instead of "FEW025".
+  // and the altitude, for example, "FEW 025" instead of "FEW025".
   // Therefore, we scan for such occurences and remove the space.
   $metar_raw_string = preg_replace("/(FEW|SCT|BKN|OVC)\s+([0-9]{3})/",
     '$1$2', $metar->raw);
@@ -183,7 +194,7 @@ function weather_parse_metar($metar_raw_string) {
  *   Datetime string (UTC) for database storage
  */
 function _weather_parse_timestamp($metar_raw) {
-  // The format to match is DDHHMMZ, e.g. 251720Z
+  // The format to match is DDHHMMZ, for example, 251720Z
   if (preg_match('/ ([0-9]{2})([0-9]{2})([0-9]{2})Z /', $metar_raw, $matches)) {
     // Construct the date
     $month = gmdate("n");
@@ -438,17 +449,18 @@ function _weather_parse_phenomena($metar_raw, &$metar) {
     $metar->image_part['fog'] = 'fog';
   }
   elseif (preg_match('/^' .
-    '(VC|MI|PR|BC)?' . // Proximity (VC) or Descriptor
-    'FG' .             // Fog
+    '(VC|MI|PR|BC|FZ)?' . // Proximity (VC) or Descriptor
+    'FG' .                // Fog
     '$/', $metar_raw, $matches)) {
     // Construct a result array of the following form:
-    // [shallow/partial/patches of] [fog]
+    // [shallow/partial/patches of/freezing] [fog]
     $result[1] = 'fog';
     if (isset($matches[1])) {
       switch ($matches[1]) {
         case 'MI': $result[0] = 'shallow'; break;
         case 'PR': $result[0] = 'partial'; break;
         case 'BC': $result[0] = 'patches of'; break;
+        case 'FZ': $result[0] = 'freezing'; break;
       }
     }
     ksort($result);
@@ -580,7 +592,7 @@ function _weather_parse_pressure($metar_raw, &$metar) {
  */
 function _weather_parse_visibility($metar_raw, &$metar) {
   if (preg_match('/^([0-9])$/', $metar_raw, $matches)) {
-    // Special case: A single digit, e.g. in 1 1/2SM
+    // Special case: A single digit, for example, in 1 1/2SM
     $metar->visibility_miles = $matches[1];
   }
   elseif (preg_match('/^' .
@@ -588,7 +600,7 @@ function _weather_parse_visibility($metar_raw, &$metar) {
     'SM' .
     '$/', $metar_raw, $matches)) {
     if ($matches[3] == '/') {
-      // This is a fractional visibility, we need to convert this
+      // This is a fractional visibility, we need to convert this.
       $visibility = $metar->visibility_miles + $matches[2] / $matches[4];
     }
     else {
