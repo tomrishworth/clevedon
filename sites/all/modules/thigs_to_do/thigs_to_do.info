@@ -1,8 +1,11 @@
 name = Thigs to do
 core = 7.x
 package = Features
+dependencies[] = ctools
 dependencies[] = ds
+dependencies[] = panels
 dependencies[] = panels_mini
+dependencies[] = smart_trim
 dependencies[] = views
 dependencies[] = views_content
 features[ctools][] = ds:ds:1
@@ -23,5 +26,3 @@ features[panels_mini][] = things_to_do_attractions_mini_panel
 features[panels_mini][] = things_to_do_upcoming_events_mine_panel
 features[views_view][] = events
 features[views_view][] = things_to_do
-features_exclude[dependencies][ctools] = ctools
-features_exclude[dependencies][panels] = panels
