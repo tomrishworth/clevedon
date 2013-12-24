@@ -11,6 +11,11 @@
   padding: $padding;
 }
 
+@mixin font-size($font-size: 16){
+  font-size : #{$font-size}px;
+  font-size : #{$font-size / 10}rem;
+}
+
 @mixin ir {
   // Kellum Method
   display: block !important;
@@ -90,7 +95,7 @@
   a{
     color: $green;
   }
-  h3{
+  h2, h3{
     @include adjust-leading-to (1);
     margin-bottom: 5px;
     border-bottom: 1px dotted #d4e3da;
