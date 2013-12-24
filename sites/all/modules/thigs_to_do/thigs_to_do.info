@@ -15,6 +15,7 @@ features[ds_field_settings][] = node|walks_|listing_box
 features[ds_layout_settings][] = node|business_lisiting|listing_box
 features[ds_layout_settings][] = node|event|listing_box
 features[ds_layout_settings][] = node|walks_|listing_box
+features[ds_view_modes][] = listing_box
 features[features_api][] = api:2
 features[panels_layout][] = events
 features[panels_mini][] = thing_to_do_walks_mini_panel
