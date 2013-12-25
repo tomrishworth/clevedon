@@ -370,42 +370,42 @@ table {
   border-spacing: 0;
 }
 
-/* line 88, ../sass/partials/global/_base.scss */
+/* line 89, ../sass/partials/global/_base.scss */
 html {
   font-size: 100%;
 }
 
-/* line 92, ../sass/partials/global/_base.scss */
+/* line 93, ../sass/partials/global/_base.scss */
 body {
   font-family: "ff-meta-serif-web-pro", serif;
   color: #333333;
 }
 
-/* line 98, ../sass/partials/global/_base.scss */
+/* line 99, ../sass/partials/global/_base.scss */
 a {
   color: #b9bd9c;
   text-decoration: none;
 }
-/* line 101, ../sass/partials/global/_base.scss */
+/* line 102, ../sass/partials/global/_base.scss */
 a:hover {
   color: #000;
 }
 
-/* line 107, ../sass/partials/global/_base.scss */
+/* line 108, ../sass/partials/global/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "ff-meta-serif-web-pro", serif;
   font-weight: bold;
   margin-bottom: 1.21429em;
 }
 
-/* line 113, ../sass/partials/global/_base.scss */
+/* line 114, ../sass/partials/global/_base.scss */
 h1 {
   font-size: 1.71429em;
   line-height: 1.41667em;
   margin-bottom: 0.85em;
 }
 
-/* line 118, ../sass/partials/global/_base.scss */
+/* line 119, ../sass/partials/global/_base.scss */
 h2 {
   font-size: 1.28571em;
   line-height: 1.88889em;
@@ -413,13 +413,13 @@ h2 {
   line-height: 1.5em;
 }
 
-/* line 124, ../sass/partials/global/_base.scss */
+/* line 125, ../sass/partials/global/_base.scss */
 h3 {
   font-size: 1em;
   line-height: 2.42857em;
 }
 
-/* line 128, ../sass/partials/global/_base.scss */
+/* line 129, ../sass/partials/global/_base.scss */
 h4 {
   font-size: 1em;
   line-height: 2.42857em;

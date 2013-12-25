@@ -102,6 +102,9 @@
     #custom-search-blocks-form-1{
       float: right;
     }
+    #block-search-form, #block-custom-search-blocks-1{
+      float: right;
+    }
     #block-search-form{
       width: auto;
       margin: 5px 0 0 0;
@@ -317,5 +320,13 @@
       @include nth-omega(4n);
       padding-right: 20px;
     }
+  }
+}
+
+// 500 and down
+
+@include breakpoint ($breakpoint-small-and-down){
+  #header .header-region-wrapper {
+    width: 100%;
   }
 }
