@@ -12,16 +12,20 @@ html{
 
 #header{
   padding-bottom: 15px;
+  .header-region-wrapper{
+    width: 100%;
+  }
   .region-header{
-    margin-top: 10px;
+    margin-top: 0;
     overflow: hidden;
-    padding-bottom: 5px;
-    @include border-radius (5px);
+    //padding-bottom: 5px;
   }
 }
 
 #logo{
   padding-top: 10px;
+  display: block;
+  text-align: center;
 }
 
 #site-name{
@@ -69,7 +73,7 @@ html{
     overflow: hidden;
   }
   li{
-    @include adjust-font-size-to (13px);
+    @include adjust-font-size-to (12.5px);
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -198,26 +202,42 @@ html{
 
 // Search Block
 
-#block-search-form{
+#header .header-region-wrapper{
+  //width: 100%;
+}
+
+#block-search-form, #block-custom-search-blocks-1{
   display: block;
   margin: 0;
   margin-top: 5px;
+  width: 170px;
+  float: none;
+  margin: auto;
   .content{
     //margin-right: 10px;
   }
-  #search-block-form{
+  #search-block-form, #custom-search-blocks-form-1{
     margin: 2px 0 0;
     float: right;
-    #edit-search-block-form--2{
+    #edit-search-block-form--2, .form-item{
       background: #000;
       color: $med-grey;
       border: 1px solid #000;
-      width: 100px;
-      @include border-top-left-radius(10px);
-      @include border-bottom-left-radius (10px);
+      width: 130px;
+      @include border-top-left-radius(4px);
+      @include border-bottom-left-radius (4px);
       @include border-bottom-right-radius(0);
       @include border-top-right-radius(0);
       height: 30px;
+      float: left;
+      margin-top: 8px;
+      input{
+        background: none;
+        border: none;
+        color: $med-grey;
+        @include adjust-font-size-to (13px);
+        padding: 8px 10px;
+      }
     }
     .form-actions .form-submit{
       @include ir;
@@ -229,10 +249,16 @@ html{
       float: left;
       margin-top: 0;
       margin-bottom: 0;
-      @include border-top-right-radius(10px);
-      @include border-bottom-right-radius(10px);
+      @include border-top-right-radius(4px);
+      @include border-bottom-right-radius(4px);
       @include border-top-left-radius(0);
       @include border-bottom-left-radius(0);
+    }
+    .form-actions{
+      width: 40px;
+      float: left;
+      margin-top: 8px;
+      margin-bottom: 0;
     }
   }
   .form-item-search-block-form{
@@ -949,6 +975,7 @@ html{
   .view-local-directory{
     li{
       @include listing;
+      height: 200px;
     }
     h2{
       @include line;
@@ -1469,6 +1496,7 @@ legend span{
         margin: 3px;
         border-radius: 3px;
         display: block;
+        @include adjust-font-size-to (12px);
         &:hover{
         border: 1px solid #333;
       }
