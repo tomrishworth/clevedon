@@ -236,7 +236,8 @@ html{
         border: none;
         color: $med-grey;
         @include adjust-font-size-to (13px);
-        padding: 8px 10px;
+        padding: 5px 10px;
+        font-family: $sans-serif;
       }
     }
     .form-actions .form-submit{
@@ -298,6 +299,10 @@ html{
 
 .pane-accordion-slider{
   display: none;
+}
+
+.view-accordion-slider a{
+  color: #ab5450;
 }
 
 .pane-block-14{
