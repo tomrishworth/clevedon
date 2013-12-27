@@ -302,7 +302,13 @@ html{
 }
 
 .view-accordion-slider a{
-  color: #ab5450;
+  background: #ab5450;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 5px;
+  &:hover{
+    background: darken(#ab5450, 10%);
+  }
 }
 
 .pane-block-14{
