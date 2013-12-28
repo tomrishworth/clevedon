@@ -317,26 +317,41 @@ html{
   .slide-1{
     a{
       background-color: #ab5450;
+      &:hover{
+        background: darken(#ab5450, 10%);
+      }
     }
   }
   .slide-2{
     a{
       background-color: #b78a4e;
+      &:hover{
+        background: darken(#b78a4e, 10%);
+      }
     }
   }
   .slide-3{
     a{
       background-color: #91a453;
+       &:hover{
+        background: darken(#91a453, 10%);
+      }
     }
   }
   .slide-4{
     a{
       background-color: #68a2ae;
+       &:hover{
+        background: darken(#68a2ae, 10%);
+      }
     }
   }
   .slide-5{
     a{
       background-color: #a56592;
+       &:hover{
+        background: darken(#a56592, 10%);
+      }
     }
   }
 }
