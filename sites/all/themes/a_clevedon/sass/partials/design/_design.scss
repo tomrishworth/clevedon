@@ -5,7 +5,7 @@
 }
 
 html{
-  background: url(../images/header-bg.jpg) center;
+  background: url(../images/header-bg.jpg) center top;
 }
 
 // Header
@@ -305,9 +305,39 @@ html{
   background: #ab5450;
   color: #fff;
   border-radius: 4px;
-  padding: 0 5px;
+  padding: 1px 5px;
+  display: inline-block;
+  height: 18px;
   &:hover{
     background: darken(#ab5450, 10%);
+  }
+}
+
+.view-accordion-slider{
+  dd:nth-child(1){
+    a{
+      background-color: #ab5450;
+    }
+  }
+  dd:nth-child(2){
+    a{
+      background-color: #b78a4e;
+    }
+  }
+  dd:nth-child(3){
+    a{
+      background-color: #91a453;
+    }
+  }
+  dd:nth-child(4){
+    a{
+      background-color: #68a2ae;
+    }
+  }
+  dd:nth-child(5){
+    a{
+      background-color: #a56592;
+    }
   }
 }
 
