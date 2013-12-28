@@ -1627,23 +1627,23 @@ html {
 }
 
 /* line 318, ../sass/partials/design/_design.scss */
-.view-accordion-slider dd:nth-child(1) a {
+.view-accordion-slider .slide-1 a {
   background-color: #ab5450;
 }
 /* line 323, ../sass/partials/design/_design.scss */
-.view-accordion-slider dd:nth-child(2) a {
+.view-accordion-slider .slide-2 a {
   background-color: #b78a4e;
 }
 /* line 328, ../sass/partials/design/_design.scss */
-.view-accordion-slider dd:nth-child(3) a {
+.view-accordion-slider .slide-3 a {
   background-color: #91a453;
 }
 /* line 333, ../sass/partials/design/_design.scss */
-.view-accordion-slider dd:nth-child(4) a {
+.view-accordion-slider .slide-4 a {
   background-color: #68a2ae;
 }
 /* line 338, ../sass/partials/design/_design.scss */
-.view-accordion-slider dd:nth-child(5) a {
+.view-accordion-slider .slide-5 a {
   background-color: #a56592;
 }
 
