@@ -356,6 +356,13 @@ html{
   }
 }
 
+.pane-image-gallery{
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .pane-block-14{
   h1{
     display: none;
@@ -464,6 +471,9 @@ html{
       margin-top: 0;
       @include adjust-font-size-to(15px);
     }
+  }
+  
+  .region-three{
     @include list;
   }
   

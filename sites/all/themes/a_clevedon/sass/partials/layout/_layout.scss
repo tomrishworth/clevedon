@@ -37,6 +37,15 @@
   vertical-align: top;
 }
 
+// Image Gallery Block
+
+.view-image-gallery{
+  li{
+    @include span-columns (8, 24);
+    @include nth-omega(3n);
+  }
+}
+
 // 500 and up
 @include breakpoint ($breakpoint-small-and-up){
   
@@ -153,7 +162,7 @@
     .pane-block-12{
       @include span-columns (12, 24);
     }
-    .pane-block-19{
+    .pane-image-gallery{
       @include span-columns (12 omega, 24);
     }
     
