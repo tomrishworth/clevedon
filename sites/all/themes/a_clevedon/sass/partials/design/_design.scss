@@ -587,6 +587,11 @@ html{
   .views-row{
     margin-bottom: 5px;
   }
+  .view-footer{
+    a{
+      @include adjust-font-size-to (20px);
+    }
+  }
 }
 // Walks View
 .view-walks{
