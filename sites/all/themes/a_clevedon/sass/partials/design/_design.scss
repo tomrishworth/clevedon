@@ -1506,9 +1506,7 @@ legend span{
     }
   }
   #block-block-9{
-    iframe{
-      @include img-frame (0px);
-    }
+    @include img-frame (0px);
   }
   .weather{
     @include list;
