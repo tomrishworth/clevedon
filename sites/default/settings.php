@@ -259,15 +259,15 @@ $drupal_hash_salt = '';
 
 
 // Require WWW.
-// if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && 
-//   $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
-//   if ($_SERVER['HTTP_HOST'] == 'clevedon.co.nz' || 
-//       $_SERVER['HTTP_HOST'] == 'live-clevedon.gotpantheon.com') {
-//     header('HTTP/1.0 301 Moved Permanently'); 
-//     header('Location: http://www.clevedon.co.nz'. $_SERVER['REQUEST_URI']); 
-//     exit();
-//   }
-// }
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && 
+  $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+  if ($_SERVER['HTTP_HOST'] == 'clevedon.co.nz' || 
+      $_SERVER['HTTP_HOST'] == 'live-clevedon.gotpantheon.com') {
+    header('HTTP/1.0 301 Moved Permanently'); 
+    header('Location: http://www.clevedon.co.nz'. $_SERVER['REQUEST_URI']); 
+    exit();
+  }
+}
 
 
 /**
