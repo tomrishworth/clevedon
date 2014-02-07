@@ -373,6 +373,9 @@ html{
 }
 
 .pane-mobile-slider{
+  .slides{
+    min-height: 400px;
+  }
   img{
     @include img-frame;
   }
@@ -387,8 +390,8 @@ html{
     text-align: center;
     min-height: 100px;
     padding: 0 10px;
-    @include adjust-font-size-to (14px);
-    @include adjust-leading-to (1);
+    @include adjust-font-size-to (13px);
+    @include adjust-leading-to (1.2);
     p{
       margin: 0;
     }
