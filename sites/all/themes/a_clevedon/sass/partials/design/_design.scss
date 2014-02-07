@@ -638,9 +638,12 @@ html{
 .page-accommodation{
   #map-link{
     width: 137px;
-    float: right;
-    position: relative;
-    top: 13px;
+    margin: 10px auto 0;
+    @include breakpoint ($breakpoint-small-and-up){
+      float: right;
+      position: relative;
+      top: 13px;
+    }
     .btn{
       @include sassy-button ("simple", 3px, 18px, $dark-grey);
     }
@@ -662,6 +665,9 @@ html{
       background: $light-green url("../images/listing-bg.jpg") 0 78%;
       margin-bottom: 20px;
       border: 1px solid #d4e3da;
+      @include breakpoint ($breakpoint-small-and-down){
+        height: auto !important;
+      }
     }
     h2{
       a{
@@ -771,6 +777,9 @@ html{
         background: none;
         padding: 0;
         margin-bottom: 20px
+        @include breakpoint($breakpoint-small-and-down){
+          text-align: center;
+        }
       }
     }
   }
@@ -990,6 +999,12 @@ html{
 // Things to do
 
 .page-events{
+  @include breakpoint ($breakpoint-small-and-down){
+    .field-name-field-description,
+    .field-name-field-business-description{
+      display: none;
+    }
+  }
   .pane-events-panel-pane-1{
     ul{
       margin: 0;
