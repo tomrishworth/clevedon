@@ -47,8 +47,8 @@
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
     <?php print $scripts; ?>
-    <script type="text/javascript" src="//use.typekit.net/isi4prr.js"></script>
-<!--<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
+    <script src="https://use.typekit.net/hor7ioa.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </head>
   <body class="<?php print $classes; ?>" <?php print $body_attributes;?>>
    <div id="fb-root"></div>
@@ -65,6 +65,6 @@
     <?php print $page_top; ?>
     <?php print $page; ?>
     <?php print $page_bottom; ?>
-        
+
   </body>
 </html>
