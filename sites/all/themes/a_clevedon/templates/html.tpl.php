@@ -47,7 +47,7 @@
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
     <?php print $scripts; ?>
-    <script src="https://use.typekit.net/hor7ioa.js"></script>
+    <script src="https://use.typekit.net/oqg8xzw.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </head>
   <body class="<?php print $classes; ?>" <?php print $body_attributes;?>>
