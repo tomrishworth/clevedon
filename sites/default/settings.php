@@ -215,9 +215,9 @@ $databases = array (
   array (
     'default' =>
     array (
-      'database' => 'clevedon',
-      'username' => 'user',
-      'password' => 'password',
+      'database' => 'qzuygptkna',
+      'username' => 'qzuygptkna',
+      'password' => 'qPf3jHVmhW',
       'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
